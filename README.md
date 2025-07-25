@@ -32,6 +32,4 @@ I'm a self-taught passionate FrontEnd developer from Brazil 🇮🇳
 <a href="https://steamcommunity.com/id/therunnas" target="_blank"><img src="https://img.shields.io/badge/Steam-000000?style=for-the-badge&logo=steam&logoColor=white" alt="Steam Profile"/>
 </a>
 <a href="https://www.youtube.com/@therunnasbaby" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
- <a href="https://discord.gg/vmnevida" target="_blank"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" target="_blank"></a> 
-
 </div>
