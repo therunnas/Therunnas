@@ -1,4 +1,4 @@
-<p align="center"><a href="https://therunnas.github.io"> <img width="636" height="324" alt="image" src="https://github.com/user-attachments/assets/5ab39d3d-eaf1-4a65-bbcd-6fd4cf70c4d9" />
+ <p align="center"><a href="https://therunnas.github.io"> <img width="636" height="324" alt="image" src="https://github.com/user-attachments/assets/5ab39d3d-eaf1-4a65-bbcd-6fd4cf70c4d9" />
 
 
 <br />
@@ -33,3 +33,10 @@ I'm a self-taught passionate FrontEnd developer from Brazil 🇮🇳
 </a>
 <a href="https://www.youtube.com/@therunnasbaby" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
 </div>
+
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YourUser/YourUser/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/YourUser/YourUser/output/github-contribution-grid-snake.svg">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/YourUser/YourUser/output/github-contribution-grid-snake.svg">
+</picture>
