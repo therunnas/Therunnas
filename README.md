@@ -1,3 +1,4 @@
+
  <p align="center"><a href="https://therunnas.github.io"> <img width="636" height="324" alt="image" src="https://github.com/user-attachments/assets/5ab39d3d-eaf1-4a65-bbcd-6fd4cf70c4d9" />
 
 
@@ -36,6 +37,12 @@ I'm a self-taught passionate FrontEnd developer from Brazil 🇮🇳
 <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg">
 </picture>
 </p> 
+## 🌲 Árvore do Tempo
+
+<p align="center">
+  <img src="./assets/tree-sm.gif" alt="Árvore Bristlecone" width="842" height="289" />
+</p>
+
 
 <div> 
 <a href="https://steamcommunity.com/id/therunnas" target="_blank"><img src="https://img.shields.io/badge/Steam-000000?style=for-the-badge&logo=steam&logoColor=white" alt="Steam Profile"/>
