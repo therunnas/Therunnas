@@ -42,3 +42,5 @@ I'm a self-taught passionate FrontEnd developer from Brazil 🇮🇳
 </a>
 <a href="https://www.youtube.com/@therunnasbaby" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
 </div>
+<a href="https://steamcommunity.com/id/therunnas/" target="_blank">
+  <img align="right" alt="Steam Profile" width="21px" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg" />
