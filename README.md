@@ -1,7 +1,7 @@
 
 
 <img width="1236" height="954" alt="runnas_transparente" src="https://github.com/user-attachments/assets/c7dc4584-54ce-413c-8bcf-c4863504b186" />
-
+<img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="300px" max-width="300px" width="300px" align="right" alt="Computador">
 <br />
 
 I'm a self-taught passionate FrontEnd developer from Brazil 🇮🇳
