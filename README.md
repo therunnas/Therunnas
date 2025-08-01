@@ -3,6 +3,9 @@
 <img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="300px" max-width="300px" width="300px" align="right" alt="Computador">
 <br />
 
+<p align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=monospace&size=17&duration=3000&pause=1000&color=FF00FF&center=false&vCenter=true&width=800&lines=%E2%94%8C%E2%94%80%E2%94%80(user%E3%89%BFrunnas)-[~];%E2%94%94%E2%94%80%24+Hello,+World!+I'm+Runnas;%E2%94%94%E2%94%80%24+%F0%9F%9A%80+Passionate+Software+Explorer+%26+Developer;%E2%94%94%E2%94%80%24+Welcome+to+my+GitHub+Profile!" alt="Typing SVG" />
+</p>
 
 **About me**
 
@@ -22,11 +25,9 @@ About me
 
 💬 Open to ideas, feedback, and collaboration — let's build something cool together!
 
-
 - 💬 Ask me about anything [here](https://github.com/therunnas/therunnas/issues)
 
 ## 📊 GitHub Stats
-
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=therunnas&layout=compact&theme=github_dark&hide_border=false&border_radius=12&size_weight=0.5&count_weight=0.5" alt="Linguagens mais usadas por Runnas" />
@@ -54,15 +55,12 @@ About me
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=1000&pause=1000&color=FF00FF&width=500&lines=if+__name__+%3D%3D+%27__main__%27%3A%0A++++app.run(debug%3DTrue)" alt="App Runner" />
 </p>
 
-
-
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake-dark.svg">
 <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg">
 <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg">
 </picture>
 </p> 
-
 
 <div> 
 <a href="https://steamcommunity.com/id/therunnas" target="_blank"><img src="https://img.shields.io/badge/Steam-000000?style=for-the-badge&logo=steam&logoColor=white" alt="Steam Profile"/>
