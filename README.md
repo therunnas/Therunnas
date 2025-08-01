@@ -26,8 +26,12 @@ About me
 💬 Open to ideas, feedback, and collaboration — let's build something cool together!
 
 - 💬 Ask me about anything [here](https://github.com/therunnas/therunnas/issues)
-
-## 📊 GitHub Stats
+ ㅤㅤ
+ ㅤㅤ
+ ㅤㅤ
+ㅤㅤ
+### 🏆 GitHub Stats & Activity:
+---
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=therunnas&layout=compact&theme=github_dark&hide_border=false&border_radius=12&size_weight=0.5&count_weight=0.5" alt="Linguagens mais usadas por Runnas" />
