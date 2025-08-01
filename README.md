@@ -3,15 +3,25 @@
 <img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="300px" max-width="300px" width="300px" align="right" alt="Computador">
 <br />
 
-I'm a self-taught passionate FrontEnd developer from Brazil 🇮🇳
 
 **About me**
 
-- 💼 FrontEnd Engineer 
+I'm a self-taught FrontEnd developer passionate about clean code, creative interfaces, and constant evolution through code.
 
-- 📈 Built github-readme-stats, verlyjs and more, **50k+** hits • **20K** stars on GitHub
+About me
 
-- ❤️ I love writing TypeScript, and building fun experiments on type-level
+💼 FrontEnd Developer | Focused on sleek UI and seamless user experience
+
+🌐 Always exploring all languages and technologies — from classic HTML to cutting-edge AI tools
+
+🧠 Curious by nature, constantly learning and building with TypeScript, JavaScript, and whatever comes next
+
+🛠️ Contributor to simple but meaningful projects — every repo is a learning milestone
+
+🚀 Currently experimenting with animations, component libraries, and scalable design systems
+
+💬 Open to ideas, feedback, and collaboration — let's build something cool together!
+
 
 - 💬 Ask me about anything [here](https://github.com/therunnas/therunnas/issues)
 
