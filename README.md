@@ -77,4 +77,8 @@ About me
 <a href="https://www.youtube.com/@therunnasbaby" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
 </div>
 <a href="https://steamcommunity.com/id/therunnas/" target="_blank">
+<br/>
+
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/therunnas/Therunnas?utm_source=oss&utm_medium=github&utm_campaign=therunnas%2FTherunnas&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+#
   <img align="right" alt="Steam Profile" width="21px" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg" />
