@@ -13,7 +13,7 @@ I'm a self-taught FrontEnd developer passionate about clean code, creative inter
 
 About me
 
-💼 FrontEnd Developer | Focused on sleek UI and seamless user experience
+💼 Developer | Focused on sleek UI and seamless user experience
 
 🌐 Always exploring all languages and technologies — from classic HTML to cutting-edge AI tools
 
