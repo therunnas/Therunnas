@@ -9,22 +9,21 @@
 
 **About me**
 
-I'm a self-taught FrontEnd developer passionate about clean code, creative interfaces, and constant evolution through code.
 
-About me
 
-💼 Developer | Focused on sleek UI and seamless user experience
+## About me  
 
-🌐 Always exploring all languages and technologies — from classic HTML to cutting-edge AI tools
+About me 
 
-🧠 Curious by nature, constantly learning and building with TypeScript, JavaScript, and whatever comes next
+I'm a self-taught FrontEnd developer passionate about clean code, creative interfaces, and constant evolution through challenges.  
 
-🛠️ Contributor to simple but meaningful projects — every repo is a learning milestone
-
-🚀 Currently experimenting with animations, component libraries, and scalable design systems
-
-💬 Open to ideas, feedback, and collaboration — let's build something cool together!
-
+- 💻 **Developer |** Focused on sleek UI and seamless user experience  
+- 🌐 Always exploring all languages and technologies — from classic HTML to cutting-edge AI tools  
+- 🔎 Curious by nature, constantly learning and building with TypeScript, JavaScript, and whatever comes next  
+- 📊 Passionate about data as well — diving into BackEnd concepts, APIs, and databases  
+- 🌱 Growing towards a **Full Stack** profile, always expanding my horizons  
+- 📦 Contributor to simple but meaningful projects — every repo is a learning milestone  
+- 🚀 Currently experimenting with animations, component libraries, and scalable design systems  
 - 💬 Ask me about anything [here](https://github.com/therunnas/therunnas/issues)
  ㅤㅤ
  <br>ㅤㅤ
