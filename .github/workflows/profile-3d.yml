@@ -2,8 +2,8 @@ name: GitHub-Profile-3D-Contrib
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # 03:00 UTC diariamente
-  workflow_dispatch:
+    - cron: "0 3 * * *"   # roda todo dia às 03:00 UTC
+  workflow_dispatch:       # permite rodar manualmente
   push:
     branches: [ main ]
 
@@ -17,15 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # >>> Uso correto: env com TOKEN e USERNAME (nada de "with:")
-    
-      - uses: yoshi389111/github-profile-3d-contrib@latest
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    USERNAME: ${{ github.repository_owner }}
+      # Geração do gráfico 3D
+      - name: Generate 3D contributions
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
 
-    
-      # Commit padrão do exemplo oficial
+      # Commit & Push das imagens geradas
       - name: Commit & Push
         run: |
           git config user.name github-actions
