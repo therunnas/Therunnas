@@ -7,13 +7,8 @@
   <img src="https://readme-typing-svg.demolab.com?font=monospace&size=17&duration=3000&pause=1000&color=FF00FF&center=false&vCenter=true&width=800&lines=%E2%94%8C%E2%94%80%E2%94%80(user%E3%89%BFrunnas)-[~];%E2%94%94%E2%94%80%24+Hello,+World!+I'm+Runnas;%E2%94%94%E2%94%80%24+%F0%9F%9A%80+Passionate+Software+Explorer+%26+Developer;%E2%94%94%E2%94%80%24+Welcome+to+my+GitHub+Profile!" alt="Typing SVG" />
 </p>
 
-**About me**
-
-
-
 ## About me  
-
-About me 
+ 
 
 I'm a self-taught FrontEnd developer passionate about clean code, creative interfaces, and constant evolution through challenges.  
 
@@ -29,12 +24,6 @@ I'm a self-taught FrontEnd developer passionate about clean code, creative inter
  <br>ㅤㅤ
  ㅤ<br>ㅤ
 ㅤㅤ
-### 🏆 GitHub Stats & Activity:
----
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=therunnas&layout=compact&theme=github_dark&hide_border=false&border_radius=12&size_weight=0.5&count_weight=0.5" alt="Linguagens mais usadas por Runnas" />
-</p>
 
 <table>
   <tr>
@@ -81,6 +70,14 @@ I'm a self-taught FrontEnd developer passionate about clean code, creative inter
 ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/therunnas/Therunnas?utm_source=oss&utm_medium=github&utm_campaign=therunnas%2FTherunnas&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 #
   <img align="right" alt="Steam Profile" width="21px" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg" />
+
+### 🏆 GitHub Stats & Activity:
+
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=therunnas&layout=compact&theme=github_dark&hide_border=false&border_radius=12&size_weight=0.5&count_weight=0.5" alt="Linguagens mais usadas por Runnas" />
+</p>
+
 
 ## 🧊 3D Contributions
 
