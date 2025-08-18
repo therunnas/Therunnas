@@ -1,1 +1,31 @@
+name: Generate 3D Contribution (daily)
 
+on:
+  schedule:
+    - cron: "0 3 * * *"   # todos os dias 03:00 UTC
+  workflow_dispatch:      # permite rodar manualmente
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write   # garante permissão para commitar os SVGs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate 3D profile contribution
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        with:
+          username: therunnas
+          theme: "night-rainbow"   # mude se quiser outro tema
+
+      - name: Commit files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: update 3d contributions" || echo "no changes"
+          git push
