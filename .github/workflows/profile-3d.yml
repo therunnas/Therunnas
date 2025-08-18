@@ -2,13 +2,21 @@ name: Generate 3D Contribution (daily)
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # todos os dias 03:00 UTC
+
+mkdir -p .github/workflows
+
+cat > .github/workflows/profile-3d.yml <<'YAML'
+name: Generate 3D Contribution (daily)
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # roda todo dia 03:00 UTC
   workflow_dispatch:      # permite rodar manualmente
   push:
     branches: [ main ]
 
 permissions:
-  contents: write   # garante permissão para commitar os SVGs
+  contents: write
 
 jobs:
   build:
@@ -16,13 +24,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Gera os SVGs na pasta padrão "profile-3d-contrib/"
       - name: Generate 3D profile contribution
         uses: yoshi389111/github-profile-3d-contrib@0.7.1
         with:
           username: therunnas
-          theme: "night-rainbow"   # mude se quiser outro tema
+          theme: night-rainbow
 
-            - name: Auto commit generated SVGs
+      # Mantém o repo organizado: move para "assets/3d-contrib/"
+      - name: Move generated svgs to assets/3d-contrib
+        run: |
+          mkdir -p assets
+          rm -rf assets/3d-contrib
+          mv profile-3d-contrib assets/3d-contrib
+          ls -la assets/3d-contrib
+
+      # Commit/push automático das imagens
+      - name: Auto commit generated SVGs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update 3D contributions"
+          commit_message: "chore(3d): update contribution svgs"
