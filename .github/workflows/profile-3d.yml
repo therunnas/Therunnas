@@ -22,10 +22,7 @@ jobs:
           username: therunnas
           theme: "night-rainbow"   # mude se quiser outro tema
 
-      - name: Commit files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore: update 3d contributions" || echo "no changes"
-          git push
+            - name: Auto commit generated SVGs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update 3D contributions"
