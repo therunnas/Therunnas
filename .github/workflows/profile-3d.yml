@@ -10,17 +10,40 @@ on:
 permissions:
   contents: write
 
+<<<<<<< HEAD
+=======
+
+mkdir -p .github/workflows
+
+cat > .github/workflows/profile-3d.yml <<'YAML'
+name: Generate 3D Contribution (daily)
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+>>>>>>> 2647ac0 (chore(ci): add 3D contributions workflow)
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2647ac0 (chore(ci): add 3D contributions workflow)
       - name: Generate 3D profile contribution
         uses: yoshi389111/github-profile-3d-contrib@0.7.1
         with:
           username: therunnas
           theme: night-rainbow
+<<<<<<< HEAD
 
       - name: Move generated svgs to assets/3d-contrib
         run: |
@@ -29,6 +52,8 @@ jobs:
           mv profile-3d-contrib assets/3d-contrib
           ls -la assets/3d-contrib
 
+=======
+>>>>>>> 2647ac0 (chore(ci): add 3D contributions workflow)
       - name: Auto commit generated SVGs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
