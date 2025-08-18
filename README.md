@@ -88,26 +88,6 @@ I'm a self-taught FrontEnd developer passionate about clean code, creative inter
   <img src="https://raw.githubusercontent.com/therunnas/therunnas/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D contribution graph" />
 </p>
 
-## 📊 Profile Summary
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=therunnas&theme=dracula" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=therunnas&theme=dracula" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=therunnas&theme=dracula" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=therunnas&theme=dracula" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=therunnas&theme=dracula&utcOffset=-3" />
-</p>
-
-## 🧊 3D Contributions
-<p align="center">
-  <img src="https://raw.githubusercontent.com/therunnas/Therunnas/main/assets/3d-contrib/profile-night-rainbow.svg" alt="3D contribution graph" />
-</p>
 
 <!-- outros temas disponíveis (basta trocar o nome do arquivo após a primeira execução do workflow):
 profile-night.svg | profile-night-green.svg | profile-night-blue.svg | profile-night-purple.svg | profile-south-season.svg -->
