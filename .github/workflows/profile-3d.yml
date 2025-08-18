@@ -18,11 +18,13 @@ jobs:
       - uses: actions/checkout@v4
 
       # >>> Uso correto: env com TOKEN e USERNAME (nada de "with:")
+    
       - uses: yoshi389111/github-profile-3d-contrib@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: therunnas    # ou: ${{ github.repository_owner }}
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    USERNAME: ${{ github.repository_owner }}
 
+    
       # Commit padrão do exemplo oficial
       - name: Commit & Push
         run: |
