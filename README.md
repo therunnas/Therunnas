@@ -6,24 +6,61 @@
 <p align="left">
   <img src="https://readme-typing-svg.demolab.com?font=monospace&size=17&duration=3000&pause=1000&color=FF00FF&center=false&vCenter=true&width=800&lines=%E2%94%8C%E2%94%80%E2%94%80(user%E3%89%BFrunnas)-[~];%E2%94%94%E2%94%80%24+Hello,+World!+I'm+Runnas;%E2%94%94%E2%94%80%24+%F0%9F%9A%80+Passionate+Software+Explorer+%26+Developer;%E2%94%94%E2%94%80%24+Welcome+to+my+GitHub+Profile!" alt="Typing SVG" />
 </p>
+---
+</div>
 
-## About me  
- 
+<table align="center" border="0" style="border: none;">
+  <tr>
+    <th colspan="2" style="text-align: center;">About me</th>
+  </tr>
+  <tr>
+    <td style="vertical-align: top; text-align: left;">
+      <ul>
+        <li>i code (sometimes)</li>
+        <li>i got more private repos than braincells</li>
+        <li>🐈</li>
+      </ul>
+    </td>
+    <td style="vertical-align: middle;">
+      <img src="https://i.imgur.com/57zo8rV.jpeg" width="100"/>
+    </td>
+  </tr>
+</table>
 
-I'm a self-taught FrontEnd developer passionate about clean code, creative interfaces, and constant evolution through challenges.  
 
-- 💻 **Developer |** Focused on sleek UI and seamless user experience  
-- 🌐 Always exploring all languages and technologies — from classic HTML to cutting-edge AI tools  
-- 🔎 Curious by nature, constantly learning and building with TypeScript, JavaScript, and whatever comes next  
-- 📊 Passionate about data as well — diving into BackEnd concepts, APIs, and databases  
-- 🌱 Growing towards a **Full Stack** profile, always expanding my horizons  
-- 📦 Contributor to simple but meaningful projects — every repo is a learning milestone  
-- 🚀 Currently experimenting with animations, component libraries, and scalable design systems  
-- 💬 Ask me about anything [here](https://github.com/therunnas/therunnas/issues)
- ㅤㅤ
- <br>ㅤㅤ
- ㅤ<br>ㅤ
-ㅤㅤ
+
+<p align="center">
+  <a href="https://golang.org/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Go/go3.svg" /></a>
+  <a href="https://en.wikipedia.org/wiki/C_(programming_language)"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/C/c3.svg" /></a>
+  <a href="https://en.wikipedia.org/wiki/C%2B%2B"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/C++/c++3.svg" /></a>
+  <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/CSharp/csharp3.svg" /></a>
+  <a href="https://www.python.org/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Python/python3.svg" /></a><br>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Javascript/javascript3.svg" /></a>
+  <a href="https://nodejs.org/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/NodeJS/nodejs3.svg" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/HTML/html3.svg" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/CSS/css3.svg" /></a>
+</p>
+
+<hr>
+
+<p align="center">
+  <a href="https://www.microsoft.com/windows"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Windows11/windows113.svg" /></a>
+  <a href="https://www.android.com/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Android/android3.svg" /></a>
+  <a href="https://www.debian.org"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Debian/debian3.svg" /></a>
+  <a href="https://ubuntu.com/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Ubuntu/ubuntu3.svg" /></a><br>
+  <a href="https://www.cloudflare.com"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Cloudflare/cloudflare3.svg" /></a>
+  <a href="https://www.nginx.com"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/NGINX/nginx3.svg" /></a>
+  <a href="https://code.visualstudio.com/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/VisualStudioCode/visualstudiocode3.svg" /></a>
+</p>
+
+<hr>
+
+<p align="center">
+  <a href="https://github.com/therunnast"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Github/github3.svg" /></a>
+  <a href="https://discord.com/users/779549523181305898"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Discord/discord3.svg" /></a>
+</p>
+
+---
 
 <table>
   <tr>
