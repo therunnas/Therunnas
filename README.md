@@ -1,3 +1,9 @@
+<p align="center">
+  <img
+    src="https://visitor-badge.laobi.icu/badge?page_id=therunnas.therunnas&left_color=darkviolet&right_color=orchid"
+    alt="visitor badge"
+  />
+</p>
 
 <img width="936" height="654" alt="runnas_transparente" src="https://github.com/user-attachments/assets/c7dc4584-54ce-413c-8bcf-c4863504b186" />
 <img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="300px" max-width="300px" width="300px" align="right" alt="Computador">
