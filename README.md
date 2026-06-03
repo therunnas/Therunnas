@@ -1,4 +1,4 @@
-
+My name is runnas and my goal is to become a programmer capable of building complex systems and tackling good challenges.
 
 <p align="center">
   <img
