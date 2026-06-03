@@ -1,5 +1,4 @@
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/c7dc4584-54ce-413c-8bcf-c4863504b186" width="220" alt="runnas" />
+
 
   <p>My name is runnas and my goal is to become a programmer capable of building complex systems and tackling good challenges.</p>
 </div>
