@@ -1,133 +1,26 @@
-My name is runnas and my goal is to become a programmer capable of building complex systems and tackling good challenges.
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/c7dc4584-54ce-413c-8bcf-c4863504b186" width="220" alt="runnas" />
 
-<p align="center">
-  <img
-    src="https://visitor-badge.laobi.icu/badge?page_id=therunnas.therunnas.manual&left_text=Visitors&left_color=darkviolet&right_color=orchid"
-    alt="visitor badge"
-  />
-</p>
-
-
-<img width="936" height="654" alt="runnas_transparente" src="https://github.com/user-attachments/assets/c7dc4584-54ce-413c-8bcf-c4863504b186" />
-<img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="300px" max-width="300px" width="300px" align="right" alt="Computador">
-<br />
-
-<p align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=monospace&size=17&duration=3000&pause=1000&color=FF00FF&center=false&vCenter=true&width=800&lines=%E2%94%8C%E2%94%80%E2%94%80(user%E3%89%BFrunnas)-[~];%E2%94%94%E2%94%80%24+Hello,+World!+I'm+Runnas;%E2%94%94%E2%94%80%24+%F0%9F%9A%80+Passionate+Software+Explorer+%26+Developer;%E2%94%94%E2%94%80%24+Welcome+to+my+GitHub+Profile!" alt="Typing SVG" />
-</p>
-
+  <p>My name is runnas and my goal is to become a programmer capable of building complex systems and tackling good challenges.</p>
 </div>
-
-<table align="center" border="0" style="border: none;">
-  <tr>
-    <th colspan="2" style="text-align: center;">About me</th>
-  </tr>
-  <tr>
-    <td style="vertical-align: top; text-align: left;">
-      <ul>
-        <li>i code (sometimes)</li>
-        <li>i got more private repos than braincells</li>
-        <li>🐈</li>
-      </ul>
-    </td>
-    <td style="vertical-align: middle;">
-      <img src="https://i.imgur.com/57zo8rV.jpeg" width="100"/>
-    </td>
-  </tr>
-</table>
-
 
 ---
 
-<table>
-  <tr>
-    <!-- Left: Typing Animation (Code Simulation) -->
-       <td>
-     <!-- Sequential Typing Animation for Flask Code -->
-<p align="left">
-  <!-- Part 1 - Initializes Flask -->
- <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=1500&pause=1000&color=FF00FF&width=500&lines=from+flask+import+Flask,+jsonify%0Aapp+%3D+Flask(__name__)" alt="Flask Initialization" />
-  
-  <!-- Part 2 - Home Route (appears after Part 1 finishes) -->
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=4000&pause=1000&color=FF00FF&width=500&lines=%40app.route(%27%2F%27)%0Adef+home()%3A%0A++++return+jsonify(%7B%27message%27%3A+%27Welcome%27%7D)" alt="Home Route" />
-  
-  <!-- Part 3 - Users Route -->
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=3000&pause=1000&color=FF00FF&width=500&lines=%40app.route(%27%2Fusers%27)%0Adef+get_users()%3A%0A++++users+%3D+%5B%7B%27id%27%3A+1%7D%2C+%7B%27id%27%3A+2%7D%5D%0A++++return+jsonify(users)" alt="Users Route" />
-  
-  <!-- Part 4 - Single User Route -->
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=2000&pause=1000&color=FF00FF&width=500&lines=%40app.route(%27%2Fuser%2F%3Cint%3Auser_id%3E%27)%0Adef+get_user(user_id)%3A%0A++++users+%3D+%7B1%3A+%7B%27name%27%3A+%27Alice%27%7D%7D%0A++++return+jsonify(users.get(user_id))" alt="User Route" />
-  
-  <!-- Part 5 - App Runner -->
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=1000&pause=1000&color=FF00FF&width=500&lines=if+__name__+%3D%3D+%27__main__%27%3A%0A++++app.run(debug%3DTrue)" alt="App Runner" />
-</p>
+<div align="center">
 
-<br>
+  ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+  ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
+  ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+  ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white)
+  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
+  ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+  ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/therunnas/Therunnas/output/pacman-contribution-graph-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/therunnas/Therunnas/output/pacman-contribution-graph.svg">
-    <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/therunnas/Therunnas/output/pacman-contribution-graph.svg">
-  </picture>
-</p>
+</div>
 
-</p> 
+---
 
-
-### 🏆 GitHub Activity Graph
-
-<p align="center">
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
-    <img
-      src="https://github-readme-activity-graph.vercel.app/graph?username=therunnas&bg_color=0d1117&color=ff00ff&line=ff00ff&point=ffffff&area=true&hide_border=true&custom_title=Runnas%20GitHub%20Activity%20Graph"
-      alt="Runnas GitHub Activity Graph"
-    />
-  </a>
-</p>
-
-
-
-
-
-
-## 🧊 3D Contributions
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/therunnas/therunnas/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D contribution graph" />
-</p>
-
-<br>
-
-<p align="center">
-  <a href="https://golang.org/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Go/go3.svg" /></a>
-  <a href="https://en.wikipedia.org/wiki/C_(programming_language)"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/C/c3.svg" /></a>
-  <a href="https://en.wikipedia.org/wiki/C%2B%2B"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/C++/c++3.svg" /></a>
-  <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/CSharp/csharp3.svg" /></a>
-  <a href="https://www.python.org/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Python/python3.svg" /></a><br>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Javascript/javascript3.svg" /></a>
-  <a href="https://nodejs.org/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/NodeJS/nodejs3.svg" /></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/HTML/html3.svg" /></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/CSS/css3.svg" /></a>
-</p>
-
-<hr>
-
-<p align="center">
-  <a href="https://www.microsoft.com/windows"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Windows11/windows113.svg" /></a>
-  <a href="https://www.android.com/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Android/android3.svg" /></a>
-  <a href="https://www.debian.org"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Debian/debian3.svg" /></a>
-  <a href="https://ubuntu.com/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Ubuntu/ubuntu3.svg" /></a><br>
-  <a href="https://www.cloudflare.com"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Cloudflare/cloudflare3.svg" /></a>
-  <a href="https://www.nginx.com"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/NGINX/nginx3.svg" /></a>
-  <a href="https://code.visualstudio.com/"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/VisualStudioCode/visualstudiocode3.svg" /></a>
-</p>
-
-<hr>
-
-<p align="center">
-  <a href="https://github.com/therunnast"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Github/github3.svg" /></a>
-  <a href="https://discord.com/users/779549523181305898"><img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Discord/discord3.svg" /></a>
-</p>
-
-<!-- outros temas disponíveis (basta trocar o nome do arquivo após a primeira execução do workflow):
-profile-night.svg | profile-night-green.svg | profile-night-blue.svg | profile-night-purple.svg | profile-south-season.svg -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/therunnas/therunnas/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D contributions" />
+</div>
