@@ -1,9 +1,4 @@
-<p align="center">
-  <img
-    src="https://visitor-badge.laobi.icu/badge?page_id=therunnas.therunnas&left_color=darkviolet&right_color=orchid"
-    alt="visitor badge"
-  />
-</p>
+
 
 <p align="center">
   <img
