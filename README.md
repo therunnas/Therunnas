@@ -65,12 +65,20 @@
 </p> 
 
 
-### 🏆 GitHub Stats & Activity:
-
+### 🏆 GitHub Activity Graph
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=therunnas&layout=compact&theme=github_dark&hide_border=false&border_radius=12&size_weight=0.5&count_weight=0.5" alt="Linguagens mais usadas por Runnas" />
+  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+    <img
+      src="https://github-readme-activity-graph.vercel.app/graph?username=therunnas&bg_color=0d1117&color=ff00ff&line=ff00ff&point=ffffff&area=true&hide_border=true&custom_title=Runnas%20GitHub%20Activity%20Graph"
+      alt="Runnas GitHub Activity Graph"
+    />
+  </a>
 </p>
+
+
+
+
 
 
 ## 🧊 3D Contributions
