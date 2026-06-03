@@ -1,4 +1,4 @@
-name: GitHub-Profile-3D-Contrib
+﻿name: GitHub-Profile-3D-Contrib
 
 on:
   schedule:
@@ -15,19 +15,19 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Generate 3D contribution graph
         uses: yoshi389111/github-profile-3d-contrib@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
+          USERNAME: therunnas
 
       - name: Commit and push changes
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -A .
+          git add -A
 
           if git commit -m "generated profile 3d contribution graph"; then
             git push
