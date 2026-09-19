@@ -71,23 +71,24 @@ query($login:String!, $from:DateTime!, $to:DateTime!) {
 """
 
 
-LANGUAGE_QUERY = """
-query($login:String!, $from:DateTime!, $to:DateTime!) {
+REPOSITORIES_QUERY = """
+query($login:String!) {
   user(login:$login) {
-    contributionsCollection(from:$from, to:$to) {
-      commitContributionsByRepository(maxRepositories:100) {
-        contributions {
-          totalCount
-        }
-        repository {
-          nameWithOwner
-          languages(first:30, orderBy:{field:SIZE, direction:DESC}) {
-            edges {
-              size
-              node {
-                name
-                color
-              }
+    repositories(
+      first:100
+      ownerAffiliations:OWNER
+      isFork:false
+      orderBy:{field:PUSHED_AT, direction:DESC}
+    ) {
+      nodes {
+        nameWithOwner
+        isArchived
+        languages(first:100, orderBy:{field:SIZE, direction:DESC}) {
+          edges {
+            size
+            node {
+              name
+              color
             }
           }
         }
@@ -124,53 +125,50 @@ def get_recent_activity(start, end):
     return sorted(days)
 
 
-def get_language_distribution(created, now):
-    weighted = defaultdict(float)
+def get_language_distribution():
+    data = graphql(
+        REPOSITORIES_QUERY,
+        login=LOGIN,
+    )
+
+    excluded_repositories = {
+        "therunnas/therunnas",
+        "therunnas/zipzip",
+    }
+
+    totals = defaultdict(int)
     colors = {}
 
-    start = created
+    repositories = data["user"]["repositories"]["nodes"]
 
-    while start < now:
-        end = min(start + timedelta(days=330), now)
+    for repository in repositories:
+        repository_name = repository["nameWithOwner"]
 
-        data = graphql(
-            LANGUAGE_QUERY,
-            login=LOGIN,
-            **{"from": iso(start), "to": iso(end)},
-        )
+        if repository["isArchived"]:
+            continue
 
-        entries = data["user"]["contributionsCollection"]["commitContributionsByRepository"]
+        if repository_name.lower() in excluded_repositories:
+            continue
 
-        for entry in entries:
-            commits = entry["contributions"]["totalCount"]
+        for edge in repository["languages"]["edges"]:
+            language = edge["node"]["name"]
+            size = int(edge["size"])
 
-            if not commits:
+            if size <= 0:
                 continue
 
-            edges = entry["repository"]["languages"]["edges"]
-            total_bytes = sum(edge["size"] for edge in edges)
+            totals[language] += size
 
-            if not total_bytes:
-                continue
+            if edge["node"].get("color"):
+                colors[language] = edge["node"]["color"]
 
-            for edge in edges:
-                language = edge["node"]["name"]
-                size = edge["size"]
+    grand_total = sum(totals.values())
 
-                weighted[language] += commits * (size / total_bytes)
-
-                if edge["node"].get("color"):
-                    colors[language] = edge["node"]["color"]
-
-        start = end + timedelta(days=1)
-
-    total = sum(weighted.values())
-
-    if total == 0:
+    if grand_total == 0:
         return [], {}
 
     ordered = sorted(
-        weighted.items(),
+        totals.items(),
         key=lambda item: item[1],
         reverse=True,
     )
@@ -178,8 +176,8 @@ def get_language_distribution(created, now):
     visible = []
     other = 0.0
 
-    for language, value in ordered:
-        percentage = value / total * 100
+    for language, size in ordered:
+        percentage = size / grand_total * 100
 
         if percentage >= 1.0:
             visible.append((language, percentage))
@@ -323,7 +321,7 @@ def build_svg(days, languages, colors):
             )
 
     parts.append(
-        f'<text x="40" y="{legend_start-28}" fill="{MUTED}" font-family="{FONT}" font-size="12">share of commits by stack · all time</text>'
+        f'<text x="40" y="{legend_start-28}" fill="{MUTED}" font-family="{FONT}" font-size="12">language distribution · active repositories</text>'
     )
 
     current_y = legend_start
@@ -378,7 +376,7 @@ def main():
     days = get_recent_activity(start, now)
 
     print("Calculating language distribution...")
-    languages, colors = get_language_distribution(created, now)
+    languages, colors = get_language_distribution()
 
     build_svg(days, languages, colors)
 
