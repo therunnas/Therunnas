@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="245" viewBox="0 0 480 245" role="img" aria-label="GitHub statistics for therunnas">
+<title>therunnas GitHub statistics</title>
+<rect width="480" height="245" rx="10" fill="#0d1117"/>
+<circle cx="27" cy="30" r="4" fill="#40c463"/>
+<text x="40" y="35" fill="#8b949e" font-size="12" font-family="Segoe UI, Ubuntu, Arial, sans-serif" letter-spacing="2.4">GITHUB STATS</text>
+<text x="455" y="35" text-anchor="end" fill="#8b949e" fill-opacity="0.28" font-size="11" font-family="Segoe UI, Ubuntu, Arial, sans-serif">@therunnas</text>
+<rect x="25" y="57" width="24" height="24" rx="7" fill="#e3b341"/>
+<text x="37" y="74" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">★</text>
+<text x="64" y="74" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Total Stars</text>
+<line x1="190" y1="69" x2="385" y2="69" stroke="#21262d" stroke-width="1" stroke-dasharray="2 5"/>
+<text x="452" y="74" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">3</text>
+<rect x="25" y="89" width="24" height="24" rx="7" fill="#40c463"/>
+<text x="37" y="106" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">●</text>
+<text x="64" y="106" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Total Commits</text>
+<line x1="190" y1="101" x2="385" y2="101" stroke="#21262d" stroke-width="1" stroke-dasharray="2 5"/>
+<text x="452" y="106" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">107</text>
+<rect x="25" y="121" width="24" height="24" rx="7" fill="#58a6ff"/>
+<text x="37" y="138" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">↗</text>
+<text x="64" y="138" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Total PRs</text>
+<line x1="190" y1="133" x2="385" y2="133" stroke="#21262d" stroke-width="1" stroke-dasharray="2 5"/>
+<text x="452" y="138" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">13</text>
+<rect x="25" y="153" width="24" height="24" rx="7" fill="#f85149"/>
+<text x="37" y="170" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">!</text>
+<text x="64" y="170" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Total Issues</text>
+<line x1="190" y1="165" x2="385" y2="165" stroke="#21262d" stroke-width="1" stroke-dasharray="2 5"/>
+<text x="452" y="170" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">2</text>
+<rect x="25" y="185" width="24" height="24" rx="7" fill="#bc8cff"/>
+<text x="37" y="202" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">◆</text>
+<text x="64" y="202" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Contributed to</text>
+<line x1="190" y1="197" x2="385" y2="197" stroke="#21262d" stroke-width="1" stroke-dasharray="2 5"/>
+<text x="452" y="202" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">7</text>
+<text x="25" y="230" fill="#8b949e" font-size="9" font-family="Segoe UI, Ubuntu, Arial, sans-serif">GitHub contribution statistics · @therunnas</text>
+</svg>
