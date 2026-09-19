@@ -6,3 +6,7 @@ buildSrc/
 *.class
 out/
 bin/
+
+# Python cache
+__pycache__/
+*.pyc

@@ -1,0 +1,72 @@
+name: Profile Activity & Stats
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "17 6,18 * * *"
+
+  push:
+    paths:
+      - ".github/scripts/*.py"
+      - ".github/workflows/activity-graph.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-activity-stats
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate activity graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_LOGIN: therunnas
+          OUT: assets/cards/activity-graph.svg
+        run: |
+          mkdir -p assets/cards
+          python .github/scripts/activity_graph.py
+
+      - name: Generate GitHub stats
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_LOGIN: therunnas
+          STAT_OUT: assets/cards/stats.svg
+          STREAK_OUT: assets/cards/streak.svg
+        run: |
+          python .github/scripts/github_stats.py
+
+      - name: Check generated files
+        run: |
+          echo "=== GENERATED FILES ==="
+          ls -lh assets/cards/
+
+      - name: Commit updated profile cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/cards/activity-graph.svg
+          git add assets/cards/stats.svg
+          git add assets/cards/streak.svg
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update GitHub profile cards"
+          git push
