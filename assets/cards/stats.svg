@@ -18,7 +18,7 @@
 <text x="37" y="138" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">↗</text>
 <text x="64" y="138" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Total PRs</text>
 <line x1="190" y1="133" x2="385" y2="133" stroke="#21262d" stroke-width="1" stroke-dasharray="2 5"/>
-<text x="452" y="138" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">128</text>
+<text x="452" y="138" text-anchor="end" fill="#c9d1d9" font-size="16" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">134</text>
 <rect x="25" y="153" width="24" height="24" rx="7" fill="#f85149"/>
 <text x="37" y="170" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">!</text>
 <text x="64" y="170" fill="#c9d1d9" font-size="14" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Total Issues</text>
