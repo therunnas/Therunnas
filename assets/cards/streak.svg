@@ -5,14 +5,14 @@
 <text x="40" y="35" fill="#8b949e" font-size="12" font-family="Segoe UI, Ubuntu, Arial, sans-serif" letter-spacing="2.4">STREAKS</text>
 <text x="455" y="35" text-anchor="end" fill="#8b949e" fill-opacity="0.28" font-size="11" font-family="Segoe UI, Ubuntu, Arial, sans-serif">@therunnas</text>
 <text x="30" y="92" fill="#40c463" font-size="38" font-family="Segoe UI, Ubuntu, Arial, sans-serif">♨</text>
-<text x="30" y="142" fill="#c9d1d9" font-size="50" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">0</text>
+<text x="30" y="142" fill="#c9d1d9" font-size="50" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">13</text>
 <text x="30" y="165" fill="#40c463" font-size="11" font-weight="700" letter-spacing="1.8" font-family="Segoe UI, Ubuntu, Arial, sans-serif">CURRENT STREAK</text>
-<text x="30" y="184" fill="#8b949e" font-size="10" font-family="Segoe UI, Ubuntu, Arial, sans-serif">No active streak</text>
+<text x="30" y="184" fill="#8b949e" font-size="10" font-family="Segoe UI, Ubuntu, Arial, sans-serif">Sep 18, 2026 - Present</text>
 <line x1="270" y1="58" x2="270" y2="187" stroke="#21262d"/>
 <text x="291" y="91" fill="#8b949e" font-size="10" letter-spacing="1.5" font-family="Segoe UI, Ubuntu, Arial, sans-serif">LONGEST STREAK</text>
 <text x="291" y="121" fill="#c9d1d9" font-size="28" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">17</text>
 <text x="291" y="158" fill="#8b949e" font-size="10" letter-spacing="1.5" font-family="Segoe UI, Ubuntu, Arial, sans-serif">TOTAL CONTRIBUTIONS</text>
-<text x="291" y="188" fill="#c9d1d9" font-size="28" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">19,298</text>
+<text x="291" y="188" fill="#c9d1d9" font-size="28" font-weight="700" font-family="Segoe UI, Ubuntu, Arial, sans-serif">19,303</text>
 <rect x="30.00" y="201.58" width="6.08" height="26.42" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-08-10: 200 contributions</title></rect>
 <rect x="38.08" y="225.49" width="6.08" height="2.51" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-08-11: 19 contributions</title></rect>
 <rect x="46.15" y="226.00" width="6.08" height="2.00" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-08-12: 6 contributions</title></rect>
@@ -64,5 +64,5 @@
 <rect x="417.69" y="225.23" width="6.08" height="2.77" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-09-27: 21 contributions</title></rect>
 <rect x="425.77" y="225.23" width="6.08" height="2.77" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-09-28: 21 contributions</title></rect>
 <rect x="433.85" y="225.36" width="6.08" height="2.64" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-09-29: 20 contributions</title></rect>
-<rect x="441.92" y="226.00" width="6.08" height="2.00" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-09-30: 0 contributions</title></rect>
+<rect x="441.92" y="226.00" width="6.08" height="2.00" rx="1.4" fill="#40c463" fill-opacity="0.85"><title>2026-09-30: 5 contributions</title></rect>
 </svg>
