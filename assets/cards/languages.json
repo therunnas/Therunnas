@@ -2,11 +2,11 @@
   "as_of": "2026-10-25",
   "criterion": "Share of code size (GitHub linguist bytes) across owned, non-fork, non-archived repositories, public and private; the profile repository and EXCLUDE_REPOS are left out.",
   "grouping": "Top 5 languages, the rest as Other.",
-  "repositories_counted": 35,
+  "repositories_counted": 34,
   "languages": [
     {
       "name": "TypeScript",
-      "percentage": 60.6,
+      "percentage": 60.7,
       "color": "#3178c6"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "name": "Other",
-      "percentage": 2.2,
+      "percentage": 2.1,
       "color": "#8A8A8A"
     }
   ]
