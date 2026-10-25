@@ -16,9 +16,9 @@ on:
 permissions:
   contents: read
 
-# Shared with GitHub-Profile-3D-Contrib: both commit to main.
+# Shared with GitHub-Profile-3D-Contrib: both commit to the branch they run on.
 concurrency:
-  group: profile-main-writer
+  group: profile-writer-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -32,6 +32,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      # Commits go only to the branch this run was started on, and only to an
+      # allowed one. A run on profile-v2 can never write to main.
+      - name: Resolve push target
+        run: |
+          if [ "$GITHUB_REF_TYPE" != "branch" ]; then
+            echo "::error::Only branch runs may publish (ref type: $GITHUB_REF_TYPE)."
+            exit 1
+          fi
+
+          case "$GITHUB_REF_NAME" in
+            main|profile-v2) ;;
+            *)
+              echo "::error::Branch not allowed to publish."
+              exit 1
+              ;;
+          esac
 
       - name: Setup Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
@@ -109,10 +126,28 @@ jobs:
 
           git commit -m "chore: update GitHub profile cards"
 
+          # Same guard as the "Resolve push target" step, repeated so this
+          # step is safe on its own. Never force-push.
+          if [ "$GITHUB_REF_TYPE" != "branch" ]; then
+            echo "::error::Only branch runs may publish (ref type: $GITHUB_REF_TYPE)."
+            exit 1
+          fi
+
+          case "$GITHUB_REF_NAME" in
+            main|profile-v2) ;;
+            *)
+              echo "::error::Branch not allowed to publish."
+              exit 1
+              ;;
+          esac
+
+          target="$GITHUB_REF_NAME"
+
           for attempt in 1 2 3; do
-            if git pull --rebase origin main && git push origin HEAD:main; then
+            if git pull --rebase origin "$target" && git push origin "HEAD:refs/heads/$target"; then
               exit 0
             fi
+            git rebase --abort 2>/dev/null || true
             sleep $((attempt * 10))
           done
 
