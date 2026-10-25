@@ -87,7 +87,9 @@ jobs:
           OUT_MOBILE: assets/cards/activity-graph-mobile.svg
           METRICS_IN: assets/cards/metrics.json
           LANGUAGES_OUT: assets/cards/languages.json
-          EXCLUDE_REPOS: ${{ vars.PROFILE_EXCLUDE_REPOS }}
+          # Stored as a secret: the names are private, and secrets are masked
+          # in logs. Comma-separated owner/name list.
+          EXCLUDE_REPOS: ${{ secrets.PROFILE_EXCLUDE_REPOS }}
         run: |
           python .github/scripts/activity_graph.py
 
