@@ -4,50 +4,72 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "17 6,18 * * *"
+    - cron: "17 6 * * *"
 
   push:
+    branches:
+      - main
     paths:
       - ".github/scripts/*.py"
       - ".github/workflows/activity-graph.yml"
 
 permissions:
-  contents: write
+  contents: read
 
+# Shared with GitHub-Profile-3D-Contrib: both commit to main.
 concurrency:
-  group: profile-activity-stats
-  cancel-in-progress: true
+  group: profile-main-writer
+  cancel-in-progress: false
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
 
-      - name: Generate activity graph
+      # Metrics depend on what the token can see. Without the owner's token
+      # the numbers would change silently, so the run stops instead.
+      - name: Require profile token
         env:
-          GH_TOKEN: ${{ secrets.PROFILE_TOKEN || github.token }}
-          GH_LOGIN: therunnas
-          OUT: assets/cards/activity-graph.svg
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
         run: |
-          mkdir -p assets/cards
-          python .github/scripts/activity_graph.py
+          if [ -z "$PROFILE_TOKEN" ]; then
+            echo "::error::PROFILE_TOKEN is not set."
+            exit 1
+          fi
 
       - name: Generate GitHub stats
         env:
-          GH_TOKEN: ${{ secrets.PROFILE_TOKEN || github.token }}
+          GH_TOKEN: ${{ secrets.PROFILE_TOKEN }}
           GH_LOGIN: therunnas
           STAT_OUT: assets/cards/stats.svg
           STREAK_OUT: assets/cards/streak.svg
+          METRICS_OUT: assets/cards/metrics.json
         run: |
+          mkdir -p assets/cards
           python .github/scripts/github_stats.py
+
+      - name: Generate activity graph
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+          GH_LOGIN: therunnas
+          OUT: assets/cards/activity-graph.svg
+          OUT_MOBILE: assets/cards/activity-graph-mobile.svg
+          METRICS_IN: assets/cards/metrics.json
+          EXCLUDE_REPOS: ${{ vars.PROFILE_EXCLUDE_REPOS }}
+        run: |
+          python .github/scripts/activity_graph.py
 
       - name: Check generated files
         run: |
@@ -60,8 +82,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add assets/cards/activity-graph.svg
+          git add assets/cards/activity-graph-mobile.svg
           git add assets/cards/stats.svg
           git add assets/cards/streak.svg
+          git add assets/cards/metrics.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
@@ -69,4 +93,13 @@ jobs:
           fi
 
           git commit -m "chore: update GitHub profile cards"
-          git push
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 10))
+          done
+
+          echo "::error::Could not push after 3 attempts."
+          exit 1
