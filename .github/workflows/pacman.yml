@@ -7,24 +7,34 @@ on:
   push:
     branches:
       - main
+    paths:
+      - ".github/workflows/pacman.yml"
 
 permissions:
-  contents: write
+  contents: read
+
+# Writes only to the output branch, so it does not share the main lock.
+concurrency:
+  group: pacman-output
+  cancel-in-progress: true
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
+    permissions:
+      contents: write
+
     steps:
       - name: Generate Pacman contribution graph
-        uses: abozanona/pacman-contribution-graph@main
+        uses: abozanona/pacman-contribution-graph@7332e1de7903ab780c3692a4127a59cc13872daa # main, 2026-08-01
         with:
           github_user_name: ${{ github.repository_owner }}
           games: "pacman"
 
       - name: Push SVGs to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+        uses: crazy-max/ghaction-github-pages@c0d7ff0487ee0415efb7f32dab10ea880330b1dd # v3.1.0
         with:
           target_branch: output
           build_dir: dist

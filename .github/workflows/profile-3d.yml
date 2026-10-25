@@ -6,31 +6,98 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+# Shared with Profile Activity & Stats: both commit to the branch they run on.
+concurrency:
+  group: profile-writer-${{ github.ref_name }}
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: generate-github-profile-3d-contrib
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      # Commits go only to the branch this run was started on, and only to an
+      # allowed one. A run on profile-v2 can never write to main.
+      - name: Resolve push target
+        run: |
+          if [ "$GITHUB_REF_TYPE" != "branch" ]; then
+            echo "::error::Only branch runs may publish (ref type: $GITHUB_REF_TYPE)."
+            exit 1
+          fi
+
+          case "$GITHUB_REF_NAME" in
+            main|profile-v2) ;;
+            *)
+              echo "::error::Branch not allowed to publish."
+              exit 1
+              ;;
+          esac
 
       - name: Generate 3D contribution graph
-        uses: yoshi389111/github-profile-3d-contrib@latest
+        uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3 (was @latest)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: therunnas
 
+      # The action's donut counts last-year commits by each repository's
+      # primary language. Replace it with the profile's single language
+      # source (code size), written by Profile Activity & Stats.
+      - name: Apply language source and hide private totals in 3D graphs
+        env:
+          LANGUAGES_IN: assets/cards/languages.json
+          PROFILE_3D_DIR: profile-3d-contrib
+        run: |
+          python3 .github/scripts/profile_3d_languages.py
+
       - name: Commit and push changes
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if git commit -m "generated profile 3d contribution graph"; then
-            git push
-          else
+          # Only the generated graphs, never the whole working tree.
+          git add profile-3d-contrib/
+
+          if git diff --cached --quiet; then
             echo "No changes to commit"
+            exit 0
           fi
+
+          git commit -m "generated profile 3d contribution graph"
+
+          # Same guard as the "Resolve push target" step, repeated so this
+          # step is safe on its own. Never force-push.
+          if [ "$GITHUB_REF_TYPE" != "branch" ]; then
+            echo "::error::Only branch runs may publish (ref type: $GITHUB_REF_TYPE)."
+            exit 1
+          fi
+
+          case "$GITHUB_REF_NAME" in
+            main|profile-v2) ;;
+            *)
+              echo "::error::Branch not allowed to publish."
+              exit 1
+              ;;
+          esac
+
+          target="$GITHUB_REF_NAME"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$target" && git push origin "HEAD:refs/heads/$target"; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 10))
+          done
+
+          echo "::error::Could not push after 3 attempts."
+          exit 1
