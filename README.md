@@ -27,7 +27,7 @@
 
 <div align="center">
 
-## 💼 Selected work
+## 💼 Featured Projects
 
 <sub>Project names and details are kept generic.</sub>
 
@@ -71,8 +71,12 @@
 
 ## 🛠️ Stack
 
-<img src="https://skillicons.dev/icons?i=ts,nextjs,react,tailwind,prisma,postgres,python,nodejs&perline=9" alt="ts, nextjs, react, tailwind, prisma, postgres, python, nodejs" />
-<br/>
+<picture>
+  <source media="(max-width: 700px)" srcset="https://skillicons.dev/icons?i=ts%2Cnextjs%2Creact%2Ctailwind%2Cnodejs%2Cprisma%2Cpostgres%2Cpython%2Cdocker&perline=5" />
+  <img src="https://skillicons.dev/icons?i=ts,nextjs,react,tailwind,nodejs,prisma,postgres,python,docker&perline=9" alt="TypeScript, Next.js, React, Tailwind CSS, Node.js, Prisma, PostgreSQL, Python, Docker" />
+</picture>
+
+<sub><b>Frontend</b>: TypeScript, Next.js, React, Tailwind CSS &nbsp;·&nbsp; <b>Backend&nbsp;&amp;&nbsp;data</b>: Node.js, Prisma, PostgreSQL, Python &nbsp;·&nbsp; <b>Local&nbsp;dev</b>: Docker</sub>
 
 </div>
 
