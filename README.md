@@ -35,7 +35,7 @@
 
 <picture>
   <source media="(max-width: 700px)" srcset="assets/cases-celular.svg" />
-  <img src="assets/cases.svg" width="100%" alt="Cases: Operations panel, Finance &amp; ops, Dev control plane, Community bot" />
+  <img src="assets/cases.svg" width="100%" alt="Cases: Operations Panel, Finance &amp; Operations, Production Workflow SaaS, Dev Control Plane" />
 </picture>
 
 </div>
@@ -45,21 +45,21 @@
 
 <br/>
 
-**🗓️ Operations panel**
+**🗓️ Operations Panel**
 - **Solution:** web panel to manage staff, operations, time records, billing and reports, with role-based access, two-factor authentication and an audit trail of changes.
 - **My role:** full-stack development.
 
-**📊 Finance & ops**
+**📊 Finance & Operations**
 - **Solution:** web system for financial and operational control: jobs, income and expenses, cash flow, budgets and proposals, with staged data imports, an audit log and invitation-based access.
 - **My role:** full-stack development.
 
-**🧭 Dev control plane**
+**🗂️ Production Workflow SaaS** · in development
+- **Solution:** SaaS in development, aimed at managing each job of a production team from the first lead to billing. Built so far: sign-up and login with email or Google, password reset, company workspaces with team roles and invitations, a client registry and a sales pipeline that converts leads into clients, with each company's data isolated by row-level security. Briefing and quote/proposal screens are being built interface-first and are not yet connected to the database.
+- **My role:** full-stack development.
+
+**🧭 Dev Control Plane**
 - **Solution:** command-line tooling and documentation that keep shared agent skills and project conventions consistent across multiple repositories.
 - **My role:** design and development of the tooling.
-
-**💬 Community bot**
-- **Solution:** modular Discord bot that posts configurable welcome and leave messages, with an optional generated image card.
-- **My role:** full-stack development.
 
 <sub>Sources: each project's repository documentation and code. No business results are claimed.</sub>
 
@@ -72,11 +72,16 @@
 ## 🛠️ Stack
 
 <picture>
-  <source media="(max-width: 700px)" srcset="https://skillicons.dev/icons?i=ts%2Cnextjs%2Creact%2Ctailwind%2Cnodejs%2Cprisma%2Cpostgres%2Cpython%2Cdocker&perline=5" />
+  <source media="(max-width: 700px)" srcset="https://skillicons.dev/icons?i=ts%2Cnextjs%2Creact%2Ctailwind%2Cnodejs%2Cprisma%2Cpostgres%2Cpython%2Cdocker&perline=3" />
   <img src="https://skillicons.dev/icons?i=ts,nextjs,react,tailwind,nodejs,prisma,postgres,python,docker&perline=9" alt="TypeScript, Next.js, React, Tailwind CSS, Node.js, Prisma, PostgreSQL, Python, Docker" />
 </picture>
 
-<sub><b>Frontend</b>: TypeScript, Next.js, React, Tailwind CSS &nbsp;·&nbsp; <b>Backend&nbsp;&amp;&nbsp;data</b>: Node.js, Prisma, PostgreSQL, Python &nbsp;·&nbsp; <b>Local&nbsp;dev</b>: Docker</sub>
+<p>
+<picture>
+  <source media="(max-width: 700px)" srcset="assets/ai-tools-mobile.svg" />
+  <img src="assets/ai-tools.svg" alt="AI and automation tools: Claude Code, OpenAI, Gemini, Google Antigravity, Ollama, Qdrant, n8n" />
+</picture>
+</p>
 
 </div>
 
