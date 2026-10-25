@@ -8,10 +8,6 @@
 
 <br/>
 
-<a href="https://github.com/therunnas"><img src="https://img.shields.io/badge/GitHub-1B1B1B?style=for-the-badge&logo=github&logoColor=E6E6E6" alt="GitHub" /></a>
-
-<br/><br/>
-
 **I build internal tools for operations and finance teams,<br/>with Next.js, Prisma, TypeScript and Python.**
 
 <sub>Goal: complex systems that solve real-world problems.</sub>
@@ -142,17 +138,6 @@
 <!-- github:end -->
 
 <br/>
-
-<div align="center">
-
-## 📫 Contact
-
-**Get in touch**
-
-<br/>
-
-
-</div>
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3A3A3A,100:1C1C1C&height=110&section=footer&animation=twinkling" width="100%" alt="" />
