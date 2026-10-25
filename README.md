@@ -58,7 +58,7 @@
 - **My role:** design and development of the tooling.
 
 **💬 Community bot**
-- **Solution:** modular Discord bot that posts configurable welcome and leave messages, with an optional generated image card. Structured to grow with new modules.
+- **Solution:** modular Discord bot that posts configurable welcome and leave messages, with an optional generated image card.
 - **My role:** full-stack development.
 
 <sub>Sources: each project's repository documentation and code. No business results are claimed.</sub>
@@ -132,7 +132,7 @@
 
 <img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D contribution calendar, contribution radar and languages by code size" />
 
-<sub>Pac-Man and the 3D calendar draw GitHub's contribution calendar as GitHub reports it: public and private, including automated activity, so their totals are not a measure of manual work. The 3D language donut uses the same code-size source as the activity graph.</sub>
+<sub>Pac-Man and the 3D calendar draw GitHub's contribution calendar as GitHub reports it: public and private, including automated activity, so they are not a measure of manual work. The 3D language chart uses the same code-size source as the activity graph. Totals, stars and forks of the 3D action are hidden because they mix in private data without context.</sub>
 
 </div>
 <!-- github:end -->

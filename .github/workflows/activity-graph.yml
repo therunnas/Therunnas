@@ -75,7 +75,7 @@ jobs:
           python .github/scripts/activity_graph.py
 
       # The 3D calendar shows the same language source as the activity graph.
-      - name: Apply language source to 3D graphs
+      - name: Apply language source and hide private totals in 3D graphs
         env:
           LANGUAGES_IN: assets/cards/languages.json
           PROFILE_3D_DIR: profile-3d-contrib

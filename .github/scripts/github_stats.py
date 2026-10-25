@@ -390,7 +390,7 @@ def number_cell(cx, y, value, label, number_class, seconds):
 
 
 def render_stats(cells, as_of):
-    """Indicator strip, same layout as the Vitrine numbers block."""
+    """Indicator strip, numbers strip, same layout as the README cards."""
     title = "Public GitHub indicators: " + "; ".join(
         f"{format_number(value)} {' '.join(label)}" for value, label in cells
     )

@@ -10,13 +10,23 @@ token can see. The profile reports languages by *code size* instead, so the
 two charts disagreed (e.g. Kotlin from the profile repository's template).
 The action has no setting to change or hide that donut.
 
+It also hides the footer indicators of the same action: the contribution
+total, stars and forks. They come from the action's own token and count
+private activity (including automated commits) and private repositories with
+no context, and they contradict the verified numbers in the stats card (e.g.
+16 stars against 1 public star). They are replaced by a one-line note; the
+period date is kept and no data is altered.
+
 What it does, for every SVG in PROFILE_3D_DIR:
 - finds the donut group, which the action (pinned by SHA) draws at a fixed
   position on a fixed 1280x850 canvas;
 - replaces only that group with a donut drawn from languages.json, using the
   SVG's own theme classes (fill-fg / stroke-bg) so every variant keeps its
   colors;
-- leaves the calendar, radar and totals untouched.
+- replaces the footer indicators with a note (see above);
+- leaves the 3D calendar and the radar untouched (the radar only plots the
+  shape of commit, issue, pull request, review and repository activity on a
+  log scale, without totals).
 
 It is idempotent (the replaced group is marked) and stops without writing
 anything if any file does not have the expected structure.
@@ -44,6 +54,12 @@ RADIUS = HEIGHT / 2
 MARGIN = RADIUS / 10
 ROWS = 8
 FONT_SIZE = HEIGHT / ROWS / 1.5
+
+NOTE_MARK = '<g id="calendar-note">'
+NOTE_TEXT = "GitHub contribution calendar: public and private activity, including automated. Totals not shown."
+# Footer of the action: <g> with the total, label, star, fork and period.
+FOOTER_START = '<g><text style="font-size: 32px; font-weight: bold;" x="384" y="830" text-anchor="end" class="fill-strong">'
+PERIOD = '<text style="font-size: 16px;" x="1260" y="20"'
 
 TAG = re.compile(r"<g[\s>]|</g>")
 
@@ -146,6 +162,26 @@ def replace(text, replacement):
     return text[:start] + replacement + text[end:]
 
 
+def replace_footer(text):
+    if NOTE_MARK in text:
+        return text
+
+    if text.count(FOOTER_START) != 1 or text.count(PERIOD) != 1:
+        raise ValueError("footer indicators not found in the expected form")
+
+    start = text.index(FOOTER_START)
+    end = text.index(PERIOD)
+
+    if not start < end or text[end:].count("<g") != 0 or not text.rstrip().endswith("</g></svg>"):
+        raise ValueError("footer indicators are not the last group")
+
+    note = (
+        f'{NOTE_MARK}<text style="font-size: 18px;" x="640" y="830" text-anchor="middle" class="fill-weak">'
+        f"{escape(NOTE_TEXT)}</text>"
+    )
+    return text[:start] + note + text[end:]
+
+
 def main():
     with open(LANGUAGES_IN, encoding="utf-8") as file:
         languages = json.load(file)["languages"]
@@ -160,7 +196,7 @@ def main():
         text = path.read_text(encoding="utf-8")
 
         try:
-            result = replace(text, replacement)
+            result = replace_footer(replace(text, replacement))
             ElementTree.fromstring(result)
         except (ValueError, ElementTree.ParseError) as error:
             sys.exit(f"{path}: {error}. No file was changed.")
@@ -174,7 +210,7 @@ def main():
         path.write_text(result, encoding="utf-8")
 
     summary = ", ".join(f'{language["name"]} {language["percentage"]:.1f}%' for language in languages)
-    print(f"Updated language donut in {len(updated)} files: {summary}")
+    print(f"Updated language donut and footer in {len(updated)} files: {summary}")
 
 
 if __name__ == "__main__":
