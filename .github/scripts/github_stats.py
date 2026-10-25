@@ -24,21 +24,15 @@ import subprocess
 import sys
 from datetime import date, datetime, timedelta, timezone
 
+import card_style as style
+
 LOGIN = os.getenv("GH_LOGIN", "therunnas")
 STAT_OUT = os.getenv("STAT_OUT", "assets/cards/stats.svg")
 STREAK_OUT = os.getenv("STREAK_OUT", "assets/cards/streak.svg")
 METRICS_OUT = os.getenv("METRICS_OUT", "assets/cards/metrics.json")
 
-BG = "#0d1117"
-FG = "#c9d1d9"
-MUTED = "#8b949e"
-TRACK = "#21262d"
-GREEN = "#40c463"
-BLUE = "#58a6ff"
-YELLOW = "#e3b341"
-PURPLE = "#bc8cff"
-
-FONT = "Segoe UI, Ubuntu, Arial, sans-serif"
+STAT_MOBILE_OUT = os.getenv("STAT_MOBILE_OUT", "assets/cards/stats-mobile.svg")
+STREAK_MOBILE_OUT = os.getenv("STREAK_MOBILE_OUT", "assets/cards/streak-mobile.svg")
 
 PAGE = 100
 
@@ -362,103 +356,153 @@ def format_number(number):
     return f"{int(number):,}"
 
 
-def svg_header(width, title):
-    return [
-        f'<circle cx="27" cy="30" r="4" fill="{GREEN}"/>',
-        f'<text x="40" y="35" fill="{MUTED}" font-size="12" font-family="{FONT}" letter-spacing="2.4">{title}</text>',
-        f'<text x="{width - 25}" y="35" text-anchor="end" fill="{MUTED}" fill-opacity="0.6" font-size="11" font-family="{FONT}">@{LOGIN}</text>',
-    ]
-
-
-def svg_open(width, height, label):
-    return [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{label}">',
-        f"<title>{label}</title>",
-        f'<rect width="{width}" height="{height}" rx="10" fill="{BG}"/>',
-    ]
-
-
-def write(path, parts):
+def write(path, content):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
 
     with open(path, "w", encoding="utf-8") as file:
-        file.write("\n".join(parts))
+        file.write(content)
 
 
-def render_stats(rows, as_of):
-    width = 480
-    height = 245
-    parts = svg_open(width, height, f"Public GitHub statistics for {LOGIN}")
-    parts.extend(svg_header(width, "GITHUB STATS"))
+def day_label(value):
+    return datetime.strptime(value, "%Y-%m-%d").strftime("%b %-d, %Y")
 
-    start_y = 78
-    row_height = 34
 
-    for index, (symbol, label, scope, value, color) in enumerate(rows):
-        y = start_y + index * row_height
-        parts += [
-            f'<rect x="25" y="{y - 17}" width="24" height="24" rx="7" fill="{color}"/>',
-            f'<text x="37" y="{y}" text-anchor="middle" fill="{BG}" font-size="14" font-weight="700" font-family="{FONT}">{symbol}</text>',
-            f'<text x="64" y="{y - 3}" fill="{FG}" font-size="14" font-family="{FONT}">{label}</text>',
-            f'<text x="64" y="{y + 11}" fill="{MUTED}" font-size="10" font-family="{FONT}">{scope}</text>',
-            f'<text x="{width - 28}" y="{y}" text-anchor="end" fill="{FG}" font-size="16" font-weight="700" font-family="{FONT}">{format_number(value)}</text>',
-        ]
+def range_label(start, end):
+    first = datetime.strptime(start, "%Y-%m-%d")
+    last = datetime.strptime(end, "%Y-%m-%d")
 
-    parts.append(
-        f'<text x="25" y="{height - 15}" fill="{MUTED}" font-size="9" font-family="{FONT}">'
-        f"Source: GitHub GraphQL &amp; Search API · as of {as_of}</text>"
+    if first == last:
+        return day_label(start)
+    if (first.year, first.month) == (last.year, last.month):
+        return f"{first:%b} {first.day}–{last.day}, {last.year}"
+    return f"{first:%b} {first.day} – {last:%b} {last.day}, {last.year}"
+
+
+def number_cell(cx, y, value, label, number_class, seconds):
+    lines_ = "".join(
+        f'<text class="l" x="{cx}" y="{y + 30 + i * 19}" text-anchor="middle">{style.text(line)}</text>'
+        for i, line in enumerate(label)
     )
-    parts.append("</svg>")
-    write(STAT_OUT, parts)
+    return (
+        f'<g class="up" {style.delay(seconds)}><text class="{number_class}" x="{cx}" y="{y}" text-anchor="middle">{format_number(value)}</text></g>'
+        f'<g class="up" {style.delay(seconds + .2)}>{lines_}</g>'
+    )
+
+
+def render_stats(cells, as_of):
+    """Indicator strip, same layout as the Vitrine numbers block."""
+    title = "Public GitHub indicators: " + "; ".join(
+        f"{format_number(value)} {' '.join(label)}" for value, label in cells
+    )
+    footer = f"Source: GitHub GraphQL and Search APIs · updated daily · as of {as_of}"
+
+    width, height = style.DESKTOP_WIDTH, 182
+    column = width / len(cells)
+    body = []
+
+    for index, (value, label) in enumerate(cells):
+        cx = round(column / 2 + index * column, 1)
+        body.append(number_cell(cx, 82, value, label, "n", .15 + index * .18))
+        if index:
+            body.append(
+                f'<line class="ln" x1="{index * column:.1f}" y1="38" x2="{index * column:.1f}" y2="{height - 54}" '
+                f'stroke="{style.BORDA}" pathLength="100" {style.delay(.15 + index * .18)}/>'
+            )
+
+    body.append(f'<text class="f" x="{width / 2}" y="{height - 22}" text-anchor="middle">{style.text(footer)}</text>')
+    write(STAT_OUT, style.svg(width, height, title, "\n".join(body)))
+
+    width = style.MOBILE_WIDTH
+    rows = -(-len(cells) // 2)
+    height = 30 + rows * 125 + 34
+    body = []
+
+    for index, (value, label) in enumerate(cells):
+        row, col = divmod(index, 2)
+        cx = 210 if row == rows - 1 and len(cells) % 2 else 105 + col * 210
+        body.append(number_cell(cx, 82 + row * 125, value, label, "n", .15 + index * .15))
+
+    for row in range(1, rows):
+        y = 20 + row * 125
+        body.append(f'<line class="ln" x1="28" y1="{y}" x2="{width - 28}" y2="{y}" stroke="{style.BORDA}" pathLength="100"/>')
+
+    body.append(f'<text class="f" x="{width / 2}" y="{height - 20}" text-anchor="middle">Source: GitHub APIs · as of {as_of}</text>')
+    write(STAT_MOBILE_OUT, style.svg(width, height, title, "\n".join(body)))
+
+
+def bars(recent, x0, x1, top, bottom):
+    maximum = max([count for _, count in recent] + [1])
+    step = (x1 - x0) / len(recent)
+    parts = []
+
+    for index, (day, count) in enumerate(recent):
+        bar_height = max(3, (bottom - top) * count / maximum)
+        color = style.CLARO if count else style.BORDA2
+        parts.append(
+            f'<rect x="{x0 + index * step:.1f}" y="{bottom - bar_height:.1f}" width="{step - 2:.1f}" height="{bar_height:.1f}" rx="1.5" '
+            f'fill="{color}" fill-opacity="{0.85 if count else 1}"><title>{day}: {count} public contributions</title></rect>'
+        )
+
+    return f'<g class="up" {style.delay(.7)}>' + "".join(parts) + "</g>"
 
 
 def render_streak(streak, public_last_year, recent, as_of):
-    width = 480
-    height = 245
-    parts = svg_open(width, height, f"Public contribution streak for {LOGIN}")
-    parts.extend(svg_header(width, "PUBLIC STREAK"))
-
     if streak["current"]:
-        start = datetime.strptime(streak["current_start"], "%Y-%m-%d").strftime("%b %d, %Y")
-        period = f"since {start}"
+        current = f"since {day_label(streak['current_start'])}"
     else:
-        period = "No active public streak"
+        current = "no active public streak"
 
-    if streak["longest"]:
-        longest_start = datetime.strptime(streak["longest_start"], "%Y-%m-%d").strftime("%b %d, %Y")
-        longest_period = f"from {longest_start}"
-    else:
-        longest_period = ""
+    longest = range_label(streak["longest_start"], streak["longest_end"]) if streak["longest"] else "—"
 
-    parts += [
-        f'<text x="30" y="132" fill="{FG}" font-size="50" font-weight="700" font-family="{FONT}">{format_number(streak["current"])}</text>',
-        f'<text x="30" y="157" fill="{GREEN}" font-size="11" font-weight="700" letter-spacing="1.8" font-family="{FONT}">CURRENT STREAK (DAYS)</text>',
-        f'<text x="30" y="176" fill="{MUTED}" font-size="10" font-family="{FONT}">{period}</text>',
-        f'<line x1="270" y1="58" x2="270" y2="187" stroke="{TRACK}"/>',
-        f'<text x="291" y="80" fill="{MUTED}" font-size="10" letter-spacing="1.5" font-family="{FONT}">LONGEST STREAK</text>',
-        f'<text x="291" y="108" fill="{FG}" font-size="28" font-weight="700" font-family="{FONT}">{format_number(streak["longest"])}</text>',
-        f'<text x="291" y="124" fill="{MUTED}" font-size="10" font-family="{FONT}">{longest_period}</text>',
-        f'<text x="291" y="152" fill="{MUTED}" font-size="10" letter-spacing="1.5" font-family="{FONT}">LAST 365 DAYS</text>',
-        f'<text x="291" y="180" fill="{FG}" font-size="28" font-weight="700" font-family="{FONT}">{format_number(public_last_year)}</text>',
+    cells = [
+        (streak["current"], "current streak (days)", current),
+        (streak["longest"], "longest streak (days)", longest),
+        (public_last_year, "last 365 days", "public contributions"),
     ]
+    title = (
+        f"Public contribution streak: current {streak['current']} days, "
+        f"longest {streak['longest']} days, {public_last_year} public contributions in the last 365 days"
+    )
 
-    maximum = max([count for _, count in recent] + [1])
-    bar_width = 420 / len(recent) - 2
-
-    for index, (day, count) in enumerate(recent):
-        bar_height = max(2, 22 * count / maximum)
-        x = 30 + index * (bar_width + 2)
-        parts.append(
-            f'<rect x="{x:.2f}" y="{218 - bar_height:.2f}" width="{bar_width:.2f}" height="{bar_height:.2f}" rx="1.4" '
-            f'fill="{GREEN if count else TRACK}" fill-opacity="0.85"><title>{day}: {count} public contributions</title></rect>'
+    def cell(cx, y, value, label, sub, number_class, seconds):
+        return (
+            f'<g class="up" {style.delay(seconds)}><text class="{number_class}" x="{cx}" y="{y}" text-anchor="middle">{format_number(value)}</text></g>'
+            f'<g class="up" {style.delay(seconds + .2)}>'
+            f'<text class="l" x="{cx}" y="{y + 26}" text-anchor="middle">{style.text(label)}</text>'
+            f'<text class="s" x="{cx}" y="{y + 44}" text-anchor="middle">{style.text(sub)}</text></g>'
         )
 
-    parts.append(
-        f'<text x="25" y="{height - 12}" fill="{MUTED}" font-size="9" font-family="{FONT}">'
-        f"Public contributions only, last {len(recent)} days shown · as of {as_of}</text>"
+    width, height = style.DESKTOP_WIDTH, 262
+    column = width / len(cells)
+    body = [f'<text class="k" x="32" y="40">PUBLIC ACTIVITY STREAK</text>']
+
+    for index, (value, label, sub) in enumerate(cells):
+        body.append(cell(round(column / 2 + index * column, 1), 104, value, label, sub, "n", .15 + index * .18))
+        if index:
+            body.append(
+                f'<line class="ln" x1="{index * column:.1f}" y1="62" x2="{index * column:.1f}" y2="160" '
+                f'stroke="{style.BORDA}" pathLength="100" {style.delay(.15 + index * .18)}/>'
+            )
+
+    body.append(bars(recent, 32, width - 30, 180, 214))
+    body.append(
+        f'<text class="f" x="32" y="{height - 20}">Public contributions only · last {len(recent)} days · private activity is not itemized by GitHub</text>'
+        f'<text class="f" x="{width - 32}" y="{height - 20}" text-anchor="end">as of {as_of}</text>'
     )
-    parts.append("</svg>")
-    write(STREAK_OUT, parts)
+    write(STREAK_OUT, style.svg(width, height, title, "\n".join(body)))
+
+    width, height = style.MOBILE_WIDTH, 262
+    column = width / len(cells)
+    short = {"current streak (days)": "current streak", "longest streak (days)": "longest streak"}
+    body = [f'<text class="k" x="24" y="36">PUBLIC ACTIVITY STREAK</text>']
+
+    for index, (value, label, sub) in enumerate(cells):
+        sub = sub.replace("no active public streak", "none active").replace("public contributions", "public contrib.")
+        body.append(cell(round(column / 2 + index * column, 1), 96, value, short.get(label, label), sub, "nm", .15 + index * .15))
+
+    body.append(bars(recent, 24, width - 22, 172, 204))
+    body.append(f'<text class="f" x="24" y="{height - 22}">Public contributions only · last {len(recent)} days · as of {as_of}</text>')
+    write(STREAK_MOBILE_OUT, style.svg(width, height, title, "\n".join(body)))
 
 
 def main():
@@ -567,14 +611,14 @@ def main():
     if not checks["ok"]:
         sys.exit("Validation failed: cards not updated.")
 
-    write(METRICS_OUT, [json.dumps(metrics, indent=2, ensure_ascii=False)])
+    write(METRICS_OUT, json.dumps(metrics, indent=2, ensure_ascii=False))
 
     render_stats(
         [
-            ("●", "Commits", "public repositories · all time", totals["public_commits"], GREEN),
-            ("↗", "Pull requests merged", "all repositories, incl. private · all time", search["pull_requests_merged"]["value"], BLUE),
-            ("↗", "Public pull requests", "opened · all time", search["public_pull_requests"]["value"], YELLOW),
-            ("◆", "Contributed to", "public repos of others, commits or merged PRs", len(external_repositories), PURPLE),
+            (totals["public_commits"], ["commits to public", "repositories, all time"]),
+            (search["pull_requests_merged"]["value"], ["pull requests merged,", "all repos incl. private"]),
+            (search["public_pull_requests"]["value"], ["public pull", "requests opened"]),
+            (len(external_repositories), ["public repos of others,", "commits or merged PRs"]),
         ],
         as_of,
     )
@@ -586,7 +630,7 @@ def main():
 
     render_streak(public_streak, public_last_year, recent, as_of)
 
-    print(f"Generated {METRICS_OUT}, {STAT_OUT}, {STREAK_OUT}")
+    print(f"Generated {METRICS_OUT}, {STAT_OUT}, {STAT_MOBILE_OUT}, {STREAK_OUT}, {STREAK_MOBILE_OUT}")
 
 
 if __name__ == "__main__":

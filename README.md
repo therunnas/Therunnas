@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:FFFFFF,100:BDBDBD&height=200&section=header&text=Runnas&fontColor=111111&fontSize=44&fontAlignY=36&desc=Building%20internal%20tools&descAlignY=58&descColor=111111&descSize=19&animation=fadeIn" width="100%" alt="Runnas" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1C1C1C,100:3A3A3A&height=200&section=header&text=Runnas&fontColor=F2F2F2&fontSize=44&fontAlignY=36&desc=Building%20internal%20tools&descAlignY=58&descColor=CFCFCF&descSize=19&animation=fadeIn" width="100%" alt="Runnas" />
 
 <a href="https://github.com/therunnas">
   <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1300&color=7A7A7A&center=true&vCenter=true&width=700&lines=Internal+tools+for+operations+and+finance;Next.js+%C2%B7+Prisma+%C2%B7+TypeScript+%C2%B7+Python;Admin+panels%2C+dashboards+and+bots" alt="" />
@@ -23,6 +23,7 @@
   <img src="assets/papeis.svg" width="100%" alt="Internal tools, Full-stack web, Automation" />
 </picture>
 
+<br/>
 
 </div>
 
@@ -72,6 +73,17 @@
 
 <div align="center">
 
+## 🛠️ Stack
+
+<img src="https://skillicons.dev/icons?i=ts,nextjs,react,tailwind,prisma,postgres,python,nodejs&perline=9" alt="ts, nextjs, react, tailwind, prisma, postgres, python, nodejs" />
+<br/>
+
+</div>
+
+<br/>
+
+<div align="center">
+
 ## 🧠 How I work
 
 **Rules I build internal systems with:**
@@ -85,62 +97,49 @@
 
 <br/>
 
+<!-- github:start -->
 <div align="center">
 
-## 🛠️ Stack
+## 📊 GitHub activity
 
-<img src="https://skillicons.dev/icons?i=ts,nextjs,react,tailwind,prisma,postgres,python,nodejs&perline=9" alt="ts, nextjs, react, tailwind, prisma, postgres, python, nodejs" />
-<br/>
-
-</div>
+<sub>Generated daily by GitHub Actions from the GitHub API. Public, itemized activity only, unless noted.</sub>
 
 <br/>
-
-<div align="center">
-
-## 📊 GitHub indicators
 
 <picture>
-  <source media="(max-width: 700px)" srcset="assets/numeros-celular.svg" />
-  <img src="assets/numeros.svg" width="100%" alt="179 pull requests merged all repos, as of Oct 2026, 94 commits to public repositories, all time, 5 public repos of others with commits or merged PRs" />
+  <source media="(max-width: 700px)" srcset="assets/cards/stats-mobile.svg" />
+  <img src="assets/cards/stats.svg" width="100%" alt="Public GitHub indicators" />
 </picture>
 
-<sub>Source: GitHub GraphQL and Search APIs, as of 2026-10-25. Pull requests merged include private repositories.</sub>
-
-</div>
-
 <br/>
-
-<!-- graphs:start -->
-<div align="center">
-
-## 📈 Activity
 
 <picture>
   <source media="(max-width: 700px)" srcset="assets/cards/activity-graph-mobile.svg" />
-  <img src="assets/cards/activity-graph.svg" width="100%" alt="Public GitHub activity over the last 4 months and language distribution" />
+  <img src="assets/cards/activity-graph.svg" width="100%" alt="Public activity over the last 4 months and languages by code size" />
 </picture>
 
-<br/><br/>
+<br/>
 
-<img src="assets/cards/stats.svg" width="400" alt="Public GitHub statistics" />
-<img src="assets/cards/streak.svg" width="400" alt="Public contribution streak" />
+<picture>
+  <source media="(max-width: 700px)" srcset="assets/cards/streak-mobile.svg" />
+  <img src="assets/cards/streak.svg" width="100%" alt="Public contribution streak" />
+</picture>
 
-<br/><br/>
+<br/>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/therunnas/Therunnas/output/pacman-contribution-graph-dark.svg" />
   <img src="https://raw.githubusercontent.com/therunnas/Therunnas/output/pacman-contribution-graph.svg" width="100%" alt="Pac-Man game on the contribution calendar" />
 </picture>
 
-<br/><br/>
+<br/>
 
-<img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D contribution calendar" />
+<img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D contribution calendar, contribution radar and languages by code size" />
 
-<sub>Pac-Man and 3D graphs show the GitHub contribution calendar as reported by GitHub, public and private, including automated activity. They are not a measure of manual work.</sub>
+<sub>Pac-Man and the 3D calendar draw GitHub's contribution calendar as GitHub reports it: public and private, including automated activity, so their totals are not a measure of manual work. The 3D language donut uses the same code-size source as the activity graph.</sub>
 
 </div>
-<!-- graphs:end -->
+<!-- github:end -->
 
 <br/>
 
@@ -156,5 +155,5 @@
 </div>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:BDBDBD,100:FFFFFF&height=110&section=footer&animation=twinkling" width="100%" alt="" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:3A3A3A,100:1C1C1C&height=110&section=footer&animation=twinkling" width="100%" alt="" />
 </div>

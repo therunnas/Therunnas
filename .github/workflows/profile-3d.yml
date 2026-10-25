@@ -32,6 +32,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: therunnas
 
+      # The action's donut counts last-year commits by each repository's
+      # primary language. Replace it with the profile's single language
+      # source (code size), written by Profile Activity & Stats.
+      - name: Apply language source to 3D donut
+        env:
+          LANGUAGES_IN: assets/cards/languages.json
+          PROFILE_3D_DIR: profile-3d-contrib
+        run: |
+          python3 .github/scripts/profile_3d_languages.py
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"

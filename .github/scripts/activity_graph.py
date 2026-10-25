@@ -7,8 +7,12 @@ The daily line shows public, itemized contributions only. Private activity
 is reported by GitHub as an aggregate that cannot be verified, so it is
 left out of the chart.
 
-Two versions are written: OUT for desktop and OUT_MOBILE (narrower, larger
-text) for the README <picture> switch on small screens.
+The language distribution is also written to LANGUAGES_OUT. It is the single
+source for every language chart in the profile (this graph and the donut in
+the 3D calendar), so both always show the same numbers.
+
+Two versions are written: OUT for desktop and OUT_MOBILE for the README
+<picture> switch on small screens.
 """
 
 import json
@@ -18,51 +22,46 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime, timedelta
 
+import card_style as style
+
 LOGIN = os.getenv("GH_LOGIN", "therunnas")
 OUT = os.getenv("OUT", "assets/cards/activity-graph.svg")
 OUT_MOBILE = os.getenv("OUT_MOBILE", "assets/cards/activity-graph-mobile.svg")
 METRICS_IN = os.getenv("METRICS_IN", "assets/cards/metrics.json")
+LANGUAGES_OUT = os.getenv("LANGUAGES_OUT", "assets/cards/languages.json")
 EXCLUDE_REPOS = {
     name.strip().lower()
     for name in os.getenv("EXCLUDE_REPOS", "").split(",")
     if name.strip()
 }
 WINDOW_DAYS = 122
+TOP_LANGUAGES = 5
 
-BG = "#0d1117"
-FG = "#c9d1d9"
-MUTED = "#8b949e"
-GRID = "#21262d"
-GREEN = "#40c463"
-FONT = "Segoe UI, Ubuntu, Arial, sans-serif"
+OTHER_COLOR = style.APAGADO
 
-# Geometry per version. Font sizes are multiplied by "scale".
+# Geometry per version.
 LAYOUTS = {
     "desktop": {
-        "width": 1100,
-        "scale": 1.0,
-        "left": 70,
-        "right": 35,
-        "top": 70,
-        "plot_height": 185,
-        "ticks": 8,
-        "stacked_header": False,
+        "width": style.DESKTOP_WIDTH,
+        "left": 56,
+        "right": 32,
+        "top": 96,
+        "plot_height": 150,
+        "ticks": 6,
+        "pills_per_row": 3,
         "title": "{total} public {noun} in the last 4 months",
         "note": "Private activity is not itemized by GitHub and is not plotted.",
-        "languages": "languages · owned repositories, public and private, by code size",
     },
     "mobile": {
-        "width": 600,
-        "scale": 1.5,
-        "left": 56,
-        "right": 24,
+        "width": style.MOBILE_WIDTH,
+        "left": 46,
+        "right": 22,
         "top": 104,
-        "plot_height": 200,
-        "ticks": 4,
-        "stacked_header": True,
+        "plot_height": 130,
+        "ticks": 3,
+        "pills_per_row": 2,
         "title": "{total} public {noun} · last 4 months",
         "note": "Private activity is not itemized; not plotted.",
-        "languages": "languages · owned repos, public + private",
     },
 }
 
@@ -147,11 +146,13 @@ def get_repositories():
 
 
 def get_language_distribution():
+    """Share of code size per language: top languages plus "Other"."""
     # The profile repository only holds generated assets and scripts.
     excluded_repositories = {f"{LOGIN}/{LOGIN}".lower()} | EXCLUDE_REPOS
 
     totals = defaultdict(int)
     colors = {}
+    counted = 0
 
     for repository in get_repositories():
         repository_name = repository["nameWithOwner"]
@@ -161,6 +162,8 @@ def get_language_distribution():
 
         if repository_name.lower() in excluded_repositories:
             continue
+
+        counted += 1
 
         for edge in repository["languages"]["edges"]:
             language = edge["node"]["name"]
@@ -177,7 +180,7 @@ def get_language_distribution():
     grand_total = sum(totals.values())
 
     if grand_total == 0:
-        return [], {}
+        return {"languages": [], "repositories": counted}
 
     ordered = sorted(
         totals.items(),
@@ -185,21 +188,26 @@ def get_language_distribution():
         reverse=True,
     )
 
-    visible = []
-    other = 0.0
+    languages = [
+        {
+            "name": language,
+            "percentage": round(size / grand_total * 100, 1),
+            "color": colors.get(language, OTHER_COLOR),
+        }
+        for language, size in ordered[:TOP_LANGUAGES]
+    ]
 
-    for language, size in ordered:
-        percentage = size / grand_total * 100
+    rest = sum(size for _, size in ordered[TOP_LANGUAGES:])
+    if rest:
+        languages.append(
+            {
+                "name": "Other",
+                "percentage": round(rest / grand_total * 100, 1),
+                "color": OTHER_COLOR,
+            }
+        )
 
-        if percentage >= 1.0:
-            visible.append((language, percentage))
-        else:
-            other += percentage
-
-    if other >= 0.5:
-        visible.append(("Other", other))
-
-    return visible, colors
+    return {"languages": languages, "repositories": counted}
 
 
 def nice_axis_max(value):
@@ -225,18 +233,14 @@ def nice_axis_max(value):
     return int(nice * magnitude)
 
 
-def build_svg(days, languages, colors, as_of, layout):
+def build_svg(days, languages, as_of, layout):
     width = layout["width"]
-    scale = layout["scale"]
-
     left = layout["left"]
     right = layout["right"]
     top = layout["top"]
     plot_height = layout["plot_height"]
     plot_width = width - left - right
-
-    def size(points):
-        return round(points * scale, 1)
+    bottom = top + plot_height
 
     values = [count for _, count in days]
     maximum = nice_axis_max(max(values) if values else 0)
@@ -248,158 +252,77 @@ def build_svg(days, languages, colors, as_of, layout):
         return left + plot_width * index / (len(days) - 1)
 
     def y(value):
-        return top + plot_height - (value / maximum) * plot_height
+        return bottom - (value / maximum) * plot_height
 
     points = [(x(i), y(value)) for i, value in enumerate(values)]
-
-    if points:
-        line = " ".join(
-            [
-                ("M" if i == 0 else "L") + f" {px:.2f} {py:.2f}"
-                for i, (px, py) in enumerate(points)
-            ]
-        )
-
-        area = (
-            line
-            + f" L {points[-1][0]:.2f} {top + plot_height:.2f}"
-            + f" L {points[0][0]:.2f} {top + plot_height:.2f} Z"
-        )
-    else:
-        line = ""
-        area = ""
-
     total_contributions = sum(values)
     noun = "contribution" if total_contributions == 1 else "contributions"
-
-    pill_height = size(30)
-    char_width = 7.2 * scale
-    row_gap = pill_height + size(12)
-    legend_start = top + plot_height + size(110)
-
-    legend_rows = []
-    current_row = []
-    used_width = 0
-
-    for language, percentage in languages:
-        estimated = 50 * scale + len(f"{language}  {percentage:.1f}%") * char_width + 16
-
-        if used_width + estimated > width - 40 and current_row:
-            legend_rows.append(current_row)
-            current_row = []
-            used_width = 0
-
-        current_row.append((language, percentage))
-        used_width += estimated
-
-    if current_row:
-        legend_rows.append(current_row)
-
-    height = int(legend_start + max(1, len(legend_rows)) * row_gap + size(10))
-
     title = layout["title"].format(total=f"{total_contributions:,}", noun=noun)
-    subtitle = f"daily public activity · as of {as_of} · @{LOGIN}"
+    pad = right
 
-    parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Public GitHub activity for {LOGIN}">',
-        f"<title>Public GitHub activity for {LOGIN}</title>",
-        f'<rect width="100%" height="100%" rx="8" fill="{BG}"/>',
+    body = [
+        f'<text class="k" x="{pad}" y="38">PUBLIC ACTIVITY</text>',
+        f'<text class="k" x="{width - pad}" y="38" text-anchor="end">AS OF {as_of}</text>',
+        f'<text class="h" x="{pad}" y="66">{style.text(title)}</text>',
     ]
-
-    if layout["stacked_header"]:
-        parts += [
-            f'<text x="{right}" y="{size(26)}" fill="{FG}" font-family="{FONT}" font-size="{size(18)}" font-weight="700">{title}</text>',
-            f'<text x="{right}" y="{size(46)}" fill="{MUTED}" font-family="{FONT}" font-size="{size(11)}">{subtitle}</text>',
-        ]
-    else:
-        parts += [
-            f'<text x="{left}" y="36" fill="{FG}" font-family="{FONT}" font-size="20" font-weight="700">{title}</text>',
-            f'<text x="{width-right}" y="36" text-anchor="end" fill="{MUTED}" font-family="{FONT}" font-size="13">{subtitle}</text>',
-        ]
 
     for i in range(5):
         value = maximum * i // 4
-        py = top + plot_height - plot_height * i / 4
+        py = bottom - plot_height * i / 4
+        body.append(f'<line x1="{left}" y1="{py:.1f}" x2="{width - right}" y2="{py:.1f}" stroke="{style.BORDA}" stroke-width="1"/>')
+        body.append(f'<text class="ax" x="{left - 10}" y="{py + 4:.1f}" text-anchor="end">{value}</text>')
 
-        parts.append(
-            f'<line x1="{left}" y1="{py:.2f}" x2="{width-right}" y2="{py:.2f}" stroke="{GRID}" stroke-width="1"/>'
+    tick_every = max(1, len(days) // layout["ticks"])
+    for i in range(0, len(days), tick_every):
+        date = datetime.strptime(days[i][0], "%Y-%m-%d")
+        body.append(f'<text class="ax" x="{x(i):.1f}" y="{bottom + 20}" text-anchor="middle">{date:%b %d}</text>')
+
+    if points:
+        line = " ".join(("M" if i == 0 else "L") + f"{px:.1f} {py:.1f}" for i, (px, py) in enumerate(points))
+        area = f"{line} L{points[-1][0]:.1f} {bottom} L{points[0][0]:.1f} {bottom} Z"
+        dots = "".join(
+            f'<circle cx="{px:.1f}" cy="{py:.1f}" r="3" fill="{style.CLARO}"><title>{days[i][0]}: {days[i][1]} public contributions</title></circle>'
+            for i, (px, py) in enumerate(points)
+            if days[i][1]
+        )
+        body.append(
+            f'<g class="up" {style.delay(.2)}><path d="{area}" fill="url(#area)"/>'
+            f'<path class="ln" d="{line}" fill="none" stroke="{style.DESTAQUE}" stroke-width="2" stroke-linejoin="round" pathLength="100"/>'
+            f"{dots}</g>"
         )
 
-        parts.append(
-            f'<text x="{left-12}" y="{py+5:.2f}" text-anchor="end" fill="{MUTED}" font-family="{FONT}" font-size="{size(12)}">{value}</text>'
+    body.append(f'<text class="f" x="{pad}" y="{bottom + 42}">{style.text(layout["note"])}</text>')
+
+    # Language pills.
+    legend_top = bottom + 72
+    body.append(f'<text class="k" x="{pad}" y="{legend_top}">LANGUAGES · CODE SIZE · OWNED REPOSITORIES</text>')
+
+    per_row = layout["pills_per_row"]
+    gap = 10
+    pill_width = (width - 2 * pad - gap * (per_row - 1)) / per_row
+    pill_height = 30
+    rows = -(-len(languages) // per_row) if languages else 0
+
+    for index, language in enumerate(languages):
+        row, col = divmod(index, per_row)
+        px = pad + col * (pill_width + gap)
+        py = legend_top + 14 + row * (pill_height + gap)
+        color = language["color"]
+        body.append(
+            f'<g class="up" {style.delay(.4 + index * .08)}>'
+            f'<rect x="{px:.1f}" y="{py}" width="{pill_width:.1f}" height="{pill_height}" rx="{pill_height / 2}" fill="{style.CAIXA}" stroke="{style.BORDA2}"/>'
+            f'<circle cx="{px + 15:.1f}" cy="{py + pill_height / 2}" r="5" fill="{color}"/>'
+            f'<text class="lg" x="{px + 27:.1f}" y="{py + 19.5}">{style.text(language["name"])}</text>'
+            f'<text class="lp" x="{px + pill_width - 12:.1f}" y="{py + 19.5}" text-anchor="end" fill="{style.TINTA}">{language["percentage"]:.1f}%</text>'
+            "</g>"
         )
 
-    if days:
-        tick_every = max(1, len(days) // layout["ticks"])
-
-        for i in range(0, len(days), tick_every):
-            date = datetime.strptime(days[i][0], "%Y-%m-%d")
-
-            parts.append(
-                f'<text x="{x(i):.2f}" y="{top + plot_height + size(24):.1f}" text-anchor="middle" fill="{MUTED}" font-family="{FONT}" font-size="{size(12)}">{date.strftime("%b %d")}</text>'
-            )
-
-    if area:
-        parts.append(
-            f'<path d="{area}" fill="{GREEN}" fill-opacity="0.14"/>'
-        )
-
-        parts.append(
-            f'<path d="{line}" fill="none" stroke="{GREEN}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'
-        )
-
-        for index, (px, py) in enumerate(points):
-            parts.append(
-                f'<circle cx="{px:.2f}" cy="{py:.2f}" r="2.4" fill="{GREEN}">'
-                f'<title>{days[index][0]}: {days[index][1]} public contributions</title>'
-                f'</circle>'
-            )
-
-    parts.append(
-        f'<text x="{right}" y="{top + plot_height + size(50):.1f}" fill="{MUTED}" font-family="{FONT}" font-size="{size(11)}">{layout["note"]}</text>'
+    height = int(legend_top + 14 + max(rows, 1) * (pill_height + gap) + 18)
+    label = f"Public GitHub activity for {LOGIN}: {title}. Languages by code size: " + ", ".join(
+        f'{language["name"]} {language["percentage"]:.1f}%' for language in languages
     )
 
-    parts.append(
-        f'<text x="{right}" y="{legend_start - size(28):.1f}" fill="{MUTED}" font-family="{FONT}" font-size="{size(12)}">{layout["languages"]}</text>'
-    )
-
-    current_y = legend_start
-
-    for row in legend_rows:
-        current_x = right
-
-        for language, percentage in row:
-            color = colors.get(language, MUTED)
-            if language == "Other":
-                color = MUTED
-
-            label = f"{language}  {percentage:.1f}%"
-            pill_width = 50 * scale + len(label) * char_width
-            middle = current_y - size(7)
-
-            parts.append(
-                f'<rect x="{current_x:.1f}" y="{current_y - size(22):.1f}" width="{pill_width:.1f}" height="{pill_height}" rx="{pill_height / 2}" fill="{color}" fill-opacity="0.11" stroke="{color}" stroke-opacity="0.65"/>'
-            )
-
-            parts.append(
-                f'<circle cx="{current_x + size(16):.1f}" cy="{middle:.1f}" r="{size(6)}" fill="{color}"/>'
-            )
-
-            parts.append(
-                f'<text x="{current_x + size(30):.1f}" y="{current_y - size(2):.1f}" fill="{FG}" font-family="{FONT}" font-size="{size(13)}">{language}</text>'
-            )
-
-            parts.append(
-                f'<text x="{current_x + pill_width - size(12):.1f}" y="{current_y - size(2):.1f}" text-anchor="end" fill="{color}" font-family="{FONT}" font-weight="700" font-size="{size(13)}">{percentage:.1f}%</text>'
-            )
-
-            current_x += pill_width + 16
-
-        current_y += row_gap
-
-    parts.append("</svg>")
-
-    return "\n".join(parts)
+    return style.svg(width, height, label, "\n".join(body))
 
 
 def write(path, content):
@@ -417,12 +340,27 @@ def main():
     days = get_recent_activity(metrics)
 
     print("Calculating language distribution...")
-    languages, colors = get_language_distribution()
+    distribution = get_language_distribution()
+    languages = distribution["languages"]
 
-    write(OUT, build_svg(days, languages, colors, metrics["as_of"], LAYOUTS["desktop"]))
-    write(OUT_MOBILE, build_svg(days, languages, colors, metrics["as_of"], LAYOUTS["mobile"]))
+    write(
+        LANGUAGES_OUT,
+        json.dumps(
+            {
+                "as_of": metrics["as_of"],
+                "criterion": "Share of code size (GitHub linguist bytes) across owned, non-fork, non-archived repositories, public and private; the profile repository and EXCLUDE_REPOS are left out.",
+                "grouping": f"Top {TOP_LANGUAGES} languages, the rest as Other.",
+                "repositories_counted": distribution["repositories"],
+                "languages": languages,
+            },
+            indent=2,
+        ),
+    )
 
-    print(f"Generated {OUT} and {OUT_MOBILE}")
+    write(OUT, build_svg(days, languages, metrics["as_of"], LAYOUTS["desktop"]))
+    write(OUT_MOBILE, build_svg(days, languages, metrics["as_of"], LAYOUTS["mobile"]))
+
+    print(f"Generated {OUT}, {OUT_MOBILE} and {LANGUAGES_OUT}")
 
 
 if __name__ == "__main__":

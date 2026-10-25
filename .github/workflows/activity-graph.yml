@@ -54,7 +54,9 @@ jobs:
           GH_TOKEN: ${{ secrets.PROFILE_TOKEN }}
           GH_LOGIN: therunnas
           STAT_OUT: assets/cards/stats.svg
+          STAT_MOBILE_OUT: assets/cards/stats-mobile.svg
           STREAK_OUT: assets/cards/streak.svg
+          STREAK_MOBILE_OUT: assets/cards/streak-mobile.svg
           METRICS_OUT: assets/cards/metrics.json
         run: |
           mkdir -p assets/cards
@@ -67,9 +69,18 @@ jobs:
           OUT: assets/cards/activity-graph.svg
           OUT_MOBILE: assets/cards/activity-graph-mobile.svg
           METRICS_IN: assets/cards/metrics.json
+          LANGUAGES_OUT: assets/cards/languages.json
           EXCLUDE_REPOS: ${{ vars.PROFILE_EXCLUDE_REPOS }}
         run: |
           python .github/scripts/activity_graph.py
+
+      # The 3D calendar shows the same language source as the activity graph.
+      - name: Apply language source to 3D graphs
+        env:
+          LANGUAGES_IN: assets/cards/languages.json
+          PROFILE_3D_DIR: profile-3d-contrib
+        run: |
+          python .github/scripts/profile_3d_languages.py
 
       - name: Check generated files
         run: |
@@ -84,8 +95,12 @@ jobs:
           git add assets/cards/activity-graph.svg
           git add assets/cards/activity-graph-mobile.svg
           git add assets/cards/stats.svg
+          git add assets/cards/stats-mobile.svg
           git add assets/cards/streak.svg
+          git add assets/cards/streak-mobile.svg
           git add assets/cards/metrics.json
+          git add assets/cards/languages.json
+          git add profile-3d-contrib/
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
