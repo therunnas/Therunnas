@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1C1C1C,100:3A3A3A&height=200&section=header&text=Runnas&fontColor=F2F2F2&fontSize=44&fontAlignY=36&desc=Building%20internal%20tools&descAlignY=58&descColor=CFCFCF&descSize=19&animation=fadeIn" width="100%" alt="Runnas" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1C1C1C,100:3A3A3A&height=200&section=header&text=Runnas&fontColor=F2F2F2&fontSize=44&fontAlignY=36&desc=Full-stack%2C%20internal%20systems%2C%20automation&descAlignY=58&descColor=CFCFCF&descSize=19&animation=fadeIn" width="100%" alt="Runnas" />
 
 <a href="https://github.com/therunnas">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1300&color=7A7A7A&center=true&vCenter=true&width=700&lines=Internal+tools+for+operations+and+finance;Next.js+%C2%B7+Prisma+%C2%B7+TypeScript+%C2%B7+Python;Admin+panels%2C+dashboards+and+bots" alt="" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1300&color=7A7A7A&center=true&vCenter=true&width=700&lines=Internal+systems+and+automation;Next.js+%C2%B7+TypeScript+%C2%B7+Prisma+%C2%B7+PostgreSQL;Access+control+%C2%B7+audit+%C2%B7+data+integrity" alt="" />
 </a>
 
 <br/>
 
-**I build internal tools for operations and finance teams,<br/>with Next.js, Prisma, TypeScript and Python.**
+**Full-stack developer building internal systems and automation.<br/>Next.js, TypeScript, Prisma and PostgreSQL, with care for access control, audit and data integrity.**
 
 <sub>Goal: complex systems that solve real-world problems.</sub>
 
@@ -16,7 +16,7 @@
 
 <picture>
   <source media="(max-width: 700px)" srcset="assets/papeis-celular.svg" />
-  <img src="assets/papeis.svg" width="100%" alt="Internal tools, Full-stack web, Automation" />
+  <img src="assets/papeis.svg" width="100%" alt="Internal systems, Full-stack web, Automation" />
 </picture>
 
 <br/>
@@ -29,13 +29,13 @@
 
 ## 💼 Selected work
 
-<sub>Client projects are described by industry, not by name.</sub>
+<sub>Project names and details are kept generic.</sub>
 
 <br/>
 
 <picture>
   <source media="(max-width: 700px)" srcset="assets/cases-celular.svg" />
-  <img src="assets/cases.svg" width="100%" alt="Cases: Workforce panel, Finance &amp; ops, Dev control plane, Community bot" />
+  <img src="assets/cases.svg" width="100%" alt="Cases: Operations panel, Finance &amp; ops, Dev control plane, Community bot" />
 </picture>
 
 </div>
@@ -45,23 +45,23 @@
 
 <br/>
 
-**🚚 Workforce panel**
-- **Solution:** internal panel for the operational and financial management of an outsourced workforce. Internal use only, with no public sign-up.
-- **My role:** authored all 66 merged pull requests in the project repository (Sep–Oct 2026).
+**🗓️ Operations panel**
+- **Solution:** web panel to manage staff, operations, time records, billing and reports, with role-based access, two-factor authentication and an audit trail of changes.
+- **My role:** full-stack development.
 
-**🎬 Finance & ops**
-- **Solution:** internal system for the financial and operational control of an audiovisual production company.
-- **My role:** sole contributor; authored all 46 merged pull requests (Jun–Oct 2026).
+**📊 Finance & ops**
+- **Solution:** web system for financial and operational control: jobs, income and expenses, cash flow, budgets and proposals, with staged data imports, an audit log and invitation-based access.
+- **My role:** full-stack development.
 
 **🧭 Dev control plane**
-- **Solution:** central control plane that coordinates agent-assisted development across multiple projects.
-- **My role:** sole contributor; authored all 11 merged pull requests (Sep 2026).
+- **Solution:** command-line tooling and documentation that keep shared agent skills and project conventions consistent across multiple repositories.
+- **My role:** design and development of the tooling.
 
 **💬 Community bot**
-- **Solution:** modular Discord bot for a community server. The current release handles member welcome and leave messages, with an optional visual card.
-- **My role:** sole contributor; authored all 9 merged pull requests (Jun 2026).
+- **Solution:** modular Discord bot that posts configurable welcome and leave messages, with an optional generated image card. Structured to grow with new modules.
+- **My role:** full-stack development.
 
-<sub>Sources: GitHub GraphQL and Search APIs, queried on 2026-10-25 with the account owner's token. Pull request counts include private repositories; no business results are claimed.</sub>
+<sub>Sources: each project's repository documentation and code. No business results are claimed.</sub>
 
 </details>
 
@@ -82,11 +82,11 @@
 
 ## 🧠 How I work
 
-**Rules I build internal systems with:**
+**Principles I apply, project by project:**
 
 <picture>
   <source media="(max-width: 700px)" srcset="assets/principios-celular.svg" />
-  <img src="assets/principios.svg" width="100%" alt="Server-side sessions, Access control in the database, Audit log on critical writes, Money in integer cents" />
+  <img src="assets/principios.svg" width="100%" alt="Secure, server-side auth, Access control in the database, Audit trail for critical changes, Exact values, money in cents, Incremental pull requests" />
 </picture>
 
 </div>
