@@ -1,10 +1,10 @@
 {
   "login": "therunnas",
-  "generated_at": "2026-10-25T16:49:36Z",
-  "as_of": "2026-10-25",
+  "generated_at": "2026-10-26T13:15:10Z",
+  "as_of": "2026-10-26",
   "period": {
     "from": "2021-05-12",
-    "to": "2026-10-25"
+    "to": "2026-10-26"
   },
   "definitions": {
     "calendar": "Contributions on the GitHub profile calendar: public and private, all types.",
@@ -14,9 +14,9 @@
     "external_repositories": "Public repositories not owned by the profile with at least one counted commit or merged pull request by the profile."
   },
   "displayed": {
-    "public_commits_all_time": 95,
-    "pull_requests_merged_all_repositories": 180,
-    "public_pull_requests": 13,
+    "public_commits_all_time": 96,
+    "pull_requests_merged_all_repositories": 181,
+    "public_pull_requests": 14,
     "public_repositories_contributed_to": 5,
     "public_streak": {
       "current": 1,
@@ -26,12 +26,12 @@
       "longest_start": "2026-06-03",
       "longest_end": "2026-06-06"
     },
-    "public_contributions_last_365_days": 37
+    "public_contributions_last_365_days": 39
   },
   "public": {
-    "commits": 95,
+    "commits": 96,
     "issues_opened": 0,
-    "pull_requests_opened": 13,
+    "pull_requests_opened": 14,
     "reviews": 0,
     "repositories_created": 12,
     "external_repositories": 5,
@@ -44,19 +44,19 @@
   "search": {
     "pull_requests": {
       "query": "author:therunnas is:pr",
-      "value": 206
+      "value": 207
     },
     "pull_requests_merged": {
       "query": "author:therunnas is:pr is:merged",
-      "value": 180
+      "value": 181
     },
     "public_pull_requests": {
       "query": "author:therunnas is:pr is:public",
-      "value": 13
+      "value": 14
     },
     "public_pull_requests_merged": {
       "query": "author:therunnas is:pr is:public is:merged",
-      "value": 4
+      "value": 5
     },
     "issues": {
       "query": "author:therunnas is:issue",
@@ -68,10 +68,10 @@
     }
   },
   "not_displayed": {
-    "calendar_total": 20375,
-    "calendar_last_365_days": 20009,
-    "restricted_contributions": 20252,
-    "commits_visible_to_token": 95,
+    "calendar_total": 20485,
+    "calendar_last_365_days": 20119,
+    "restricted_contributions": 20360,
+    "commits_visible_to_token": 96,
     "calendar_streak": {
       "current": 15,
       "current_start": "2026-10-11",
@@ -116,8 +116,8 @@
       },
       {
         "year": 2026,
-        "yearly_query": 19976,
-        "merged_quarters": 19976,
+        "yearly_query": 20086,
+        "merged_quarters": 20086,
         "ok": true
       }
     ],
@@ -148,7 +148,7 @@
       "2026-09-19": 4,
       "2026-10-20": 1,
       "2026-10-23": 1,
-      "2026-10-25": 2
+      "2026-10-25": 4
     },
     "calendar": {
       "2021-05-12": 2,
@@ -293,7 +293,7 @@
       "2026-10-22": 152,
       "2026-10-23": 155,
       "2026-10-24": 108,
-      "2026-10-25": 2
+      "2026-10-25": 112
     }
   }
 }

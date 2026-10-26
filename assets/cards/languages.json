@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-25",
+  "as_of": "2026-10-26",
   "criterion": "Share of code size (GitHub linguist bytes) across owned, non-fork, non-archived repositories, public and private; the profile repository and EXCLUDE_REPOS are left out.",
   "grouping": "Top 5 languages, the rest as Other.",
   "repositories_counted": 34,
