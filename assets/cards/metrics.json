@@ -1,10 +1,10 @@
 {
   "login": "therunnas",
-  "generated_at": "2026-10-28T13:07:15Z",
-  "as_of": "2026-10-28",
+  "generated_at": "2026-10-29T13:13:09Z",
+  "as_of": "2026-10-29",
   "period": {
     "from": "2021-05-12",
-    "to": "2026-10-28"
+    "to": "2026-10-29"
   },
   "definitions": {
     "calendar": "Contributions on the GitHub profile calendar: public and private, all types.",
@@ -15,7 +15,7 @@
   },
   "displayed": {
     "public_commits_all_time": 98,
-    "pull_requests_merged_all_repositories": 183,
+    "pull_requests_merged_all_repositories": 188,
     "public_pull_requests": 14,
     "public_repositories_contributed_to": 6,
     "public_streak": {
@@ -44,11 +44,11 @@
   "search": {
     "pull_requests": {
       "query": "author:therunnas is:pr",
-      "value": 208
+      "value": 213
     },
     "pull_requests_merged": {
       "query": "author:therunnas is:pr is:merged",
-      "value": 183
+      "value": 188
     },
     "public_pull_requests": {
       "query": "author:therunnas is:pr is:public",
@@ -68,17 +68,17 @@
     }
   },
   "not_displayed": {
-    "calendar_total": 20493,
-    "calendar_last_365_days": 20127,
-    "restricted_contributions": 20366,
+    "calendar_total": 20517,
+    "calendar_last_365_days": 20151,
+    "restricted_contributions": 20390,
     "commits_visible_to_token": 98,
     "calendar_streak": {
-      "current": 18,
+      "current": 19,
       "current_start": "2026-10-11",
-      "current_end": "2026-10-28",
-      "longest": 18,
+      "current_end": "2026-10-29",
+      "longest": 19,
       "longest_start": "2026-10-11",
-      "longest_end": "2026-10-28"
+      "longest_end": "2026-10-29"
     },
     "reason": "Includes private activity that is not itemized and cannot be verified as manual work."
   },
@@ -116,8 +116,8 @@
       },
       {
         "year": 2026,
-        "yearly_query": 20094,
-        "merged_quarters": 20094,
+        "yearly_query": 20118,
+        "merged_quarters": 20118,
         "ok": true
       }
     ],
@@ -297,7 +297,8 @@
       "2026-10-25": 112,
       "2026-10-26": 2,
       "2026-10-27": 1,
-      "2026-10-28": 1
+      "2026-10-28": 19,
+      "2026-10-29": 6
     }
   }
 }
